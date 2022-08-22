@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from app_1.models import Incentivos, Usuarios
 
-id2 = 3
+id2 = 1
 
 def home(request):
     usuarios_obj = Usuarios.objects.get(id = id2)
