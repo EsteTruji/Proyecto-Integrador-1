@@ -20,3 +20,6 @@ def mi_actividad(request):
 
 def filtrar_por(request):
     return render(request, 'filtrar_por.html')
+
+def etiquetado(request):
+    return render(request, 'etiquetado.html')

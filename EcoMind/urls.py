@@ -23,4 +23,5 @@ urlpatterns = [
     path('mis_incentivos/', app1Views.mis_incentivos),
     path('mi_actividad/', app1Views.mi_actividad),
     path('filtrar_por/', app1Views.filtrar_por),
+    path('etiquetado/', app1Views.etiquetado),
 ]

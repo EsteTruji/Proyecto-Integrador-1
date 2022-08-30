@@ -197,15 +197,15 @@
         height: 57px;
         box-shadow: 0 3px 5px rgba(0, 0, 0);
     }
+
+    .fondoColor2{
+        box-shadow: 0 3px 5px rgba(0, 0, 0);
+    }
     
     .alinear{
         text-align: right;
     }
     
-    .fondoColor2{
-        box-shadow: 0 3px 5px rgba(0, 0, 0);
-    }
-
     .espacios{
         margin-left: 8px;
         float: right;
@@ -257,10 +257,6 @@
     
     .color4{
         background: #ffd986;
-        border-radius: 1em;
-        padding: 3px;
-        border: 7px solid rgb(255, 197, 72);
-
     }
     
     .color1{
@@ -275,6 +271,30 @@
         padding-left: 11.7em;
     }
 
+    .color4{
+        background: #ffd986;
+        border-radius: 1em;
+        padding: 3px;
+        border: 7px solid rgb(255, 197, 72);
+
+    }
+    
+    table, th, td{
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        padding: 10px;
+        border: 1px solid rgb(255, 123, 0);
+    }
+
+    th{
+        background: #ffbe30;
+    }
+
+    td{
+        background: #ffd986;
+    }
+      
     
     </style>
     
@@ -358,29 +378,45 @@
         <div class="colorPunto">
             .
         </div>
-        
         <div margin-top=30>
             <img class="fondoColor2" width=100% src="https://i.postimg.cc/dtk0ZfLr/Barra-Logo-Eco-Mind.png" border="0px">
           </div>
-        <div class="centrado">
+        
+          <div class="centrado">
             <div>
-              <h2 align="center"><b><font> ¡Bienvenid@ a la sección <b class="color1"> Filtrar por...! </b></h2>  
+              <h2 align="center"><b><font> ¡Bienvenid@ a la sección <b class="color1"> Etiquetado de Residuos! </b></h2>  
             </div>
             <div class="centrado2">
               <img  class="box"
               width="120"
               alt="WhatsApp Logo"
-              src="https://i.postimg.cc/cCRjzkhk/943769.png"
+              src="https://i.postimg.cc/sfc4pTbD/etiqueta.png"
               /></div>
             <div style="padding-top: 24px; padding-bottom: 24px;">
               <div class="mt-1 mb-3 sombra" style="border-radius: 20px;">
                   <div class="color4">
-                      <h4 align="center" class="center titulo5 mt-4 mb-4"><font>En esta sección puedes filtrar el contenido que deseas visualizar acerca de los datos que el sistema ha recogido. Estos datos son la cantidad de residuos almacenados ya sea por los tipos y categorías de esos mismos residuos, o simplemente en general todos los tipos y categorías. Puedes filtrar los datos según su tipo, según su categoría, según la caneca en la cual están almacenados los residuos, por fecha de recolección de un residuo, o a lo largo de un periodo de tiempo.</font></h4>
-                      <h2 align="center" class="center titulo5 mt-4 mb-4" ><font> 😲 Fascinante, ¿verdad? 😲</font></h2>                  </div>
+                      <h4 align="center" class="center titulo5 mt-4 mb-4"><font>En esta sección puedes revisar cuáles son los incentivos que has ganado debido al uso del sistema <b class="color1">Eco</b><b class="color2">Mind!</b> a lo largo del tiempo. Así, con base en la cantidad de incentivos que obtengas puedes reclamar beneficios que te servirán para acceder a descuentos en productos de vestido y alimentación en diferentes locales comerciales y establecimientos.</font></h4>
+                      <h2 align="center" class="center titulo5 mt-4 mb-4" ><font> 🏆 ¡Mejor, imposible! 🏆</font></h2>                  </div>
               </div>
             </div>
-    </div>
 
-
+            <div style="text-align:center; margin-top:20px; margin-bottom:18px;">
+                <h2>Incentivos del usuario</h2>
+          </div>
+          <table style="font-size: 22px;  background: #0073ff; padding: 0.7em; margin-bottom:2em;">
+            <tr style="padding:1em;">          
+              <th>Nombre</th>
+              <th>Código</th>
+              <th>Cantidad total de puntos obtenidos</th>
+       
+            </tr>
+            <tr style="padding:2em;">
+              <td>{{nombre}}</td>
+              <td>{{codigo}}</td>
+              <td>{{puntos}}</td>
+             
+          </table>
+    
+    
     </body>
     </html>
