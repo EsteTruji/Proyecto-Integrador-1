@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from app_1.models import Incentivos, Usuarios
 from .forms import UploadImageForm
-from django.shortcuts import render_to_response, RequestContext
+#from django.shortcuts import render_to_response, RequestContext
 
 id2 = 1
 
@@ -26,7 +26,7 @@ def filtrar_por(request):
 def etiquetado(request):
     return render(request, 'etiquetado.html')
 
-def upload_image_view(request):
+"""def upload_image_view(request):
     if request.method == 'POST':
         form = UploadImageForm(request.POST, request.FILES)
         if form.is_valid():
@@ -35,4 +35,4 @@ def upload_image_view(request):
     else:
         form = UploadImageForm()
 
-    return render_to_response('albums/upload.html', locals(), context_instance=RequestContext(request))
+    return render_to_response('albums/upload.html', locals(), context_instance=RequestContext(request))"""
