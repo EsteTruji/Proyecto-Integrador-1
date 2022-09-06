@@ -17,11 +17,10 @@ class Incentivos(models.Model):
 	codigo = models.CharField(max_length=6)
 	puntos = models.IntegerField(default=0)
 
-class etiqueta(models.Model):
+class lectura(models.Model):
     carpeta=models.CharField(max_length=200)
-    img=models.ImageField(upload_to='carpeta/imagen/') # related_name='imagen'
-    def __unicode__(self,):
-        return str(self.img)
+    img1=models.ImageField(upload_to='lectura/imagen/') # related_name='imagen'
+    img2=models.ImageField(upload_to='lectura/imagen/')
 #python manage.py makemigrations
 #python manage.py sqlmigrate app_1 0001
 #python manage.py migrate
