@@ -24,4 +24,5 @@ urlpatterns = [
     path('mi_actividad/', app1Views.mi_actividad),
     path('filtrar_por/', app1Views.filtrar_por),
     path('etiquetado/', app1Views.etiquetado),
+    path('etiqueta_exito/', app1Views.etiquetaExito),
 ]

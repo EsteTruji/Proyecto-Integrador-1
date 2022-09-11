@@ -23,3 +23,7 @@ def filtrar_por(request):
 
 def etiquetado(request):
     return render(request, 'etiquetado.html')
+
+def etiquetaExito(request):
+    material = request.POST['material']
+    return render(request, 'exito_Etiquetado.html')

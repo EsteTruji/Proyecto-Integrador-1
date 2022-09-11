@@ -284,15 +284,20 @@
         margin-right: auto;
         text-align: center;
         padding: 10px;
-        border: 1px solid rgb(255, 123, 0);
+        border: 3px solid #264d53;
+        background:#70c6ff;
+        
+        
     }
 
     th{
-        background: #ffbe30;
+        
+        border: 3px solid #0b98ad;
+        background:#0094b9;
     }
 
     td{
-        background: #ffd986;
+        background: none;
     }
       
     
@@ -402,9 +407,189 @@
                 </div>
             </div>
   
-            <div style="text-align:center; margin-top:20px; margin-bottom:18px;padding-left:2em;">
+            <div style="text-align:center; margin-top:30px; margin-bottom:24px;padding-left:2em;">
                   <h2><font face="Montserrat" color="#0000"><b>Etiquetado de residuos</b></font></h2>
+            </div>
+            <div style="padding-left: 3em; padding-bottom: 6em">
+                <form action="/etiqueta_exito/" method="POST">
+                    {% csrf_token %}
+                    <table class="table-bordered">
+                        <tr style="border: 3px solid #264d53;">
+                            <th style="border: 3px solid #264d53;">
+                                <h5><font face="Montserrat" color="#0000"><b>Material</b></font> <img width=40 style="margin-left:0.2em;" src="https://cdn-icons-png.flaticon.com/512/4660/4660970.png" alt=""></h5>
+                            </th>
+                            <th>
+                                <h5><font face="Montserrat" color="#0000"><b>Color empaque</b></font> <img width=35 style="margin-left:0.2em;" src="https://cdn-icons-png.flaticon.com/512/291/291029.png" alt=""></h5>
+                            </th>
+                            <th style="border: 3px solid #264d53;">
+                                <h5><font face="Montserrat" color="#0000"><b>Tapa botella</b></font> <img width=35 style="margin-left:0.2em;" src="https://cdn-icons-png.flaticon.com/512/7030/7030752.png" alt=""></h5>
+                            </th>
+                            <th style="border: 3px solid #264d53;">
+                                <h5><font face="Montserrat" color="#0000"><b>Suciedad</b></font> <img width=35 style="margin-left:0.2em;" src="https://cdn-icons-png.flaticon.com/512/2260/2260431.png" alt=""></h5>
+                            </th>
+                            <th style="border: 3px solid #264d53;">
+                                <h5><font face="Montserrat" color="#0000"><b>Tipo empaque</b></font><img width=35 style="margin-left:0.2em;" src="https://cdn-icons-png.flaticon.com/512/1585/1585223.png" alt=""></h5>
+                            </th>
+                            </tr>
+                        <tr>
+                                <td style="border: 3px solid #264d53;">
+                                    <select class="form-select" style="border: 3px solid #007491;" size="4" aria-label="size 4 select example" type="text" name="material" required>
+                                
+                                        <option value="PET">PET</option>
+                                        <option value="PE-HD">PE-HD</option>
+                                        <option value="PVC">PVC</option>
+                                        <option value="PE-LD">PE-LD</option>
+                                        <option value="PP">PP</option>
+                                        <option value="PS">PS</option>
+                                        <option value="Other plastic">Otro plástico</option>
+                                        <option value="Glass">Vidrio</option>
+                                        <option value="Aluminium">Aluminio</option>
+                                        <option value="Other metal">Otro metal</option>
+                                        <option value="Cardboard">Cartón</option>
+                                        <option value="Paper print">Papel de impresión</option>
+                                        <option value="Newspaper">Periódico</option>
+                                        <option value="Magazine">Revista</option>
+                                        <option value="Tetrapack">Tetrapack</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </td>
+                                <td style="border: 3px solid #264d53;">
+                                    <select class="form-select" style="border: 3px solid #007491;" size="4" aria-label="size 4 select example" type="text" name="package_color" required>
+                                        
+                                        <option value="N/A">N/A (No tiene empaque)</option>
+                                        <option value="Clear transparent">Transparente claro</option>
+                                        <option value="White transparent">Blanco tranparente</option>
+                                        <option value="Red transparent">Rojo transparente</option>
+                                        <option value="Green transparent">Verde transparente</option>
+                                        <option value="Brown transparent">Café transparente</option>
+                                        <option value="Blue transparent">Azúl transparente</option>
+                                        <option value="Colored transparent">Transparente colorido</option>
+                                        <option value="White opaque">Blanco opaco</option>
+                                        <option value="Blue opaque">Azúl opaco</option>
+                                        <option value="Green opaque">Verde opaco</option>
+                                        <option value="Brown opaque">Café opaco</option>
+                                        <option value="Black opaque">Negro opaco</option>
+                                        <option value="Colored opaque">Opaco colorido</option>
+                                        <option value="Yellow">Amarillo</option>
+                                        <option value="Orange">Naranjado</option>
+                                        <option value="Purple">Morado</option>
+                                        <option value="Gray">Gris</option>
+                                        <option value="Other color">Otro color</option>
+                                    </select>
+                                </td>  
+                                <td style="border: 3px solid #264d53;">
+                                    <select class="form-select" style="border: 3px solid #007491;" size="4" aria-label="size 4 select example" type="text" name="bottle_cap" required>
+                                        
+                                        <option value="N/A">N/A (No aplica)</option>
+                                        <option value="TRUE">Sí tiene</option>
+                                        <option value="FALSE">No tiene</option>
+                                    </select>
+                                </td>
+                                <td style="border: 3px solid #264d53;">
+                                    <select class="form-select"  style="border: 3px solid #007491;" size="4" aria-label="size 4 select example" type="text" name="dirtiness" required>
+                                        
+                                        <option value="Clean">Limpio</option>
+                                        <option value="Small">Poca suciedad</option>
+                                        <option value="Medium">Suciedad media</option>
+                                        <option value="High">Mucha suciedad</option>
+                                    </select>
+                                </td>
+                                <td style="border: 3px solid #264d53;">
+                                    <select class="form-select" style="border: 3px solid #007491;" size="4" aria-label="size 4 select example" type="text" name="packaging-type" required>
+                                        
+                                        <option value="Bottle">Botella</option>
+                                        <option value="Can">Lata</option>
+                                        <option value="Bag">Bolsa</option>
+                                        <option value="Box">Caja</option>
+                                        <option value="Cup">Taza/vaso</option>
+                                        <option value="Wrapping">Envoltorio</option>
+                                        <option value="Lid">Tapa</option>
+                                        <option value="Sheet">Hoja</option>
+                                        <option value="Other">Otro</option>
+                                    </select>
+                                </td>    
+                            </tr>
+                        </table>
+                        <div style="padding-top:2em;">
+                        <table class="table-bordered">
+                            <tr style="border: 3px solid #264d53">
+                                <th style="border: 3px solid #264d53;">
+                                    <h5><font face="Montserrat" color="#0000"><b>Marca</b></font> <img width=35 style="margin-left:0.2em;" src="https://cdn-icons-png.flaticon.com/512/5130/5130770.png" alt=""></h5>
+                                </th>
+                                <th style="border: 3px solid #264d53;">
+                                    <h5><font face="Montserrat" color="#0000"><b>Referencia</b></font> <img width=35 style="margin-left:0.2em;" src="https://cdn-icons-png.flaticon.com/512/3940/3940190.png" alt=""></h5>
+                                </th>
+                                <th style="border: 3px solid #264d53;">
+                                    <h5><font face="Montserrat" color="#0000"><b>Capacidad (ml)</b> <img width=35 style="margin-left:0.2em;" src="https://cdn-icons-png.flaticon.com/512/1000/1000227.png" alt=""></font></h5>
+                                </th>
+                                <th style="border: 3px solid #264d53;">
+                                    <h5><font face="Montserrat" color="#0000"><b>Daño</b></font> <img width=35 style="margin-left:0.2em;" src="https://cdn-icons-png.flaticon.com/512/1739/1739833.png" alt=""></h5>
+                                </th>
+                                
+                            </tr>
+                            <tr style="border: 3px solid #264d53;">
+                                <td style="border: 3px solid #264d53;">
+                                    <select class="form-select" style="border: 3px solid #007491;" size="4" aria-label="size 4 select example" type="text" name="brand" required>
+                                        
+                                        <option value="Coca-cola">Coca-Cola</option>
+                                        <option value="Bavaria">Bavaria</option>
+                                        <option value="Postobon">Postobón</option>
+                                        <option value="Colanta">Colanta</option>
+                                        <option value="Alpina">Alpina</option>
+                                        <option value="Pepsi">Pepsi</option>
+                                        <option value="Nacional de chocolates">Nacional de chocolates</option>
+                                        <option value="Detodito">Detodito</option>
+                                        <option value="Doritos">Doritos</option>
+                                        <option value="Gatorade">Gatorade</option>
+                                        <option value="Cheesetris">Cheesetris</option>
+                                        <option value="Manimoto">Manimoto</option>
+                                        <option value="Margarita">Margarita</option>
+                                        <option value="Tosh">Tosh</option>
+                                    </select>
+                                </td>
+                                <td style="border: 3px solid #264d53;">
+                                    <select class="form-select" style="border: 3px solid #007491;" size="4" aria-label="size 4 select example" type="text" name="reference" required>
+                                        
+                                        <option value="Zero">Zero</option>
+                                        <option value="Original">Original</option>
+                                        <option value="Pony Malta">Pony Malta</option>
+                                        <option value="Manzana">Manzana</option>
+                                        <option value="Yogurt">Yogurt</option>
+                                        <option value="Bonyurt">Bonyurt</option>
+                                        <option value="Pepsi">Pepsi</option>
+                                        <option value="Chocolatina Jet">Chocolatina Jet</option>
+                                    </select>
+                                </td>  
+                                <td style="border: 3px solid #264d53;">
+                                    <select class="form-select" style="border: 3px solid #007491;" size="4" aria-label="size 4 select example" type="text" name="capacity" required>
+                                        
+                                        <option value="N/A">N/A (No aplica)</option>
+                                        <option value="0-299">0-299 ml</option>
+                                        <option value="300-499">300-499 ml</option>
+                                        <option value="500-999">500-999 ml</option>
+                                        <option value="1000-1499">1000-1499 ml</option>
+                                        <option value="1500-3000">1500-3000 ml</option>
+                                        <option value=">3000">>3000 ml</option>
+                                    </select>
+                                </td>
+                                <td style="border: 3px solid #264d53;">
+                                    <select class="form-select" style="border: 3px solid #007491;" size="4" aria-label="size 4 select example" type="text" name="damage" required>
+                                        
+                                        <option value="N/A">N/A (No aplica)</option>
+                                        <option value="Mixed">Semi-dañado</option>
+                                        <option value="Damaged">Dañado</option>
+                                        <option value="Undamaged">No dañado</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>      
+                    <div style="padding-left: 34.1em; padding-top: 2em;">        
+                    <button type="submit" class="btn btn-primary btn-lg" style=" border: 3px solid rgb(0, 103, 172);"><font face="Montserrat">Etiquetar residuo </font></button>
+                    </div>
+                </form>
             </div>
         </div>
     </body>
 </html>
+
