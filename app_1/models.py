@@ -8,10 +8,10 @@ class Usuario(models.Model):
 	nombre = models.CharField(max_length=45, null=False)
 
 class Etiqueta(models.Model):
-	id_archivo = models.PositiveBigIntegerField(primary_key=True, blank=False)
+	id_archivo = models.CharField(primary_key=True, max_length=100, blank=False)
 	Usuario_id_usuario = models.ForeignKey(Usuario, null= False, blank=False, on_delete=models.CASCADE)
 	etiqueta = models.JSONField(null=False, blank=False)
-	caneca = models.CharField(max_length=45, null=False, blank=False, choices=((0,'Ordinario'), (1,'Papel_Carton'), (2,'Plastico'), (3,'Vidrio'), (4,'Organicos'), (5,'Residuos_Peligrosos'), (6,'Aluminio')))
+	caneca = models.CharField(max_length=45, null=False, blank=False, choices=(('Ordinario','Ordinario'), ('Papel_Carton','Papel_Carton'), ('Plastico','Plastico'), ('Vidrio','Vidrio'), ('Organicos','Organicos'), ('Residuos_Peligrosos','Residuos_Peligrosos'), ('Aluminio','Aluminio')))
 	fecha_etiquetado = models.DateTimeField(auto_now_add=True)
 
 class Residuo(models.Model):
@@ -25,7 +25,7 @@ class Puntos(models.Model):
 
 class Actividad(models.Model):
 	Usuario_id_usuario = models.ForeignKey(Usuario, null= False, blank=False, on_delete=models.CASCADE)
-	tipo_actividad = models.CharField(max_length=45, null=False, blank=False, choices=((0,'etiquetado'),(1,'clasificado')))
+	tipo_actividad = models.CharField(max_length=45, null=False, blank=False, choices=(('etiquetado','etiquetado'),('clasificado','clasificado')))
 	fecha_actividad = models.DateTimeField(auto_now_add=True)
 
 #python manage.py makemigrations
