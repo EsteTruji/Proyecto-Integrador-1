@@ -36,6 +36,7 @@ def etiquetaExito(request):
     reference = request.POST['reference']
     capacity = request.POST['capacity']
     damage = request.POST['damage']
+    id_archivo1 = request.POST['id_archivo']
 
     pruebaEtiquetas = {
         'Material': material,
@@ -56,6 +57,6 @@ def etiquetaExito(request):
         pruebaEtiquetas = json.load(f)
         jsonString = json.dumps(pruebaEtiquetas)
     
-    db_etiqueta = Etiqueta(id_archivo = 1, etiqueta = jsonString, Usuario_id_usuario_id = usuarios_obj.id_usuario, caneca='Plastico')
+    db_etiqueta = Etiqueta(id_archivo = id_archivo1, etiqueta = jsonString, Usuario_id_usuario_id = usuarios_obj.id_usuario, caneca='Plastico')
     db_etiqueta.save()
     return render(request, 'exito_Etiquetado.html', {'material': material})

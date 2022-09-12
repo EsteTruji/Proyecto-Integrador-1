@@ -299,7 +299,11 @@
     td{
         background: none;
     }
-      
+    
+    #imagePreview{
+        width: 720px;
+        margin: 0 auto;
+    }
     
     </style>
     
@@ -407,12 +411,39 @@
                 </div>
             </div>
   
-            <div style="text-align:center; margin-top:30px; margin-bottom:24px;padding-left:2em;">
+            <div style="text-align:center; margin-top:30px; margin-bottom:24px;padding-left:5.5em;">
                   <h2><font face="Montserrat" color="#0000"><b>Etiquetado de residuos</b></font></h2>
             </div>
             <div style="padding-left: 3em; padding-bottom: 6em">
                 <form action="/etiqueta_exito/" method="POST">
                     {% csrf_token %}
+            <div class="color4 borde1" style="margin-left: 30em; margin-right: 28em; padding: 0.5em;">
+                <input class="form-control" type="file" name="imagen" id="imagen" accept=".jpg,.png,.jpeg" required/>
+            </div>
+
+            <div style="padding-left:13.5em; padding-right:13em; padding-top: 2em; padding-bottom: 2em;" id="imagePreview">
+            </div>
+            
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> 
+            <script type="text/javascript">
+                (function(){
+                    function filePreview(input){
+                        if(input.files && input.files[0]){
+                            var reader = new FileReader();
+                            reader.onload = function(e){
+                                $('#imagePreview').html("<img width=110% style='padding:1em; margin-bottom:2em; background: rgb(125, 206, 160); border-radius: 1em; border: 7px solid #31b55b;' src='"+e.target.result+"' /> <div><h5><font face='Montserrat' style='margin-left:3.3em;' color='#0000'><b>Nombre del archivo</b></font></h5></div><div class='color4 borde1' style='padding: 0.7em; margin-left:2.2em;''><select class='form-select' style='border: 3px solid #007491;'' size='1' aria-label='size 1 select example' type='text' name='id_archivo' required><option value='"+input.files[0].name+"'selected>"+input.files[0].name+"</option></select></div>");
+                            }
+                            
+                            reader.readAsDataURL(input.files[0]);
+                        }
+                    }
+
+                    $('#imagen').change(function(){
+                        filePreview(this);
+                    });
+                })();
+            </script>
+            
                     <table class="table-bordered">
                         <tr style="border: 3px solid #264d53;">
                             <th style="border: 3px solid #264d53;">
