@@ -5,6 +5,5 @@ from .models import *
 
 admin.site.register(Usuario)
 admin.site.register(Etiqueta)
-admin.site.register(Residuo)
 admin.site.register(Puntos)
 admin.site.register(Actividad)

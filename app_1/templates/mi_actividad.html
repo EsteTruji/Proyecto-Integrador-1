@@ -282,6 +282,7 @@
         margin-left: auto;
         margin-right: auto;
         text-align: center;
+        font-size: 22px;
         padding: 10px;
         border: 1px solid rgb(255, 123, 0);
     }
@@ -419,20 +420,15 @@
               </tr>
             </thead>
             <tbody>
+            {% for actividad in actividades %}
               <tr>
-                <th style="background: #21318f; color:rgb(209, 209, 209);" scope="row">1</th>
+                <td style="background: #21318f; color:rgb(209, 209, 209);">{{forloop.counter}}</th>
                 <td style="background: #5066e4; color:rgb(255, 255, 255);">{{nombre}}</td>
-                <td style="background: #5066e4; color:rgb(255, 255, 255);">{{codigo}}</td>
-                <td style="background: #5066e4; color:rgb(255, 255, 255);">clasficado</td>
-                <td style="background: #5066e4; color:rgb(255, 255, 255);">Ayer</td>
-              </tr>
-              <tr>
-                <th style="background: #21318f; color:rgb(209, 209, 209);" scope="row">2</th>
-                <td style="background: #5066e4; color:rgb(255, 255, 255);">{{nombre}}</td>
-                <td style="background: #5066e4; color:rgb(255, 255, 255);">{{codigo}}</td>
-                <td style="background: #5066e4; color:rgb(255, 255, 255);">etiquetado</td>
-                <td style="background: #5066e4; color:rgb(255, 255, 255);">Lunes</td>
-              </tr>
+                <td style="background: #5066e4; color:rgb(255, 255, 255);">{{actividad.Usuario_id_usuario_id}}</td>
+                <td style="background: #5066e4; color:rgb(255, 255, 255);">{{actividad.tipo_actividad}}</td>
+                <td style="background: #5066e4; color:rgb(255, 255, 255);">{{actividad.fecha_actividad}}</td>
+              </tr>           
+            {% endfor %}
               
             </tbody>
           </table>

@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from app_1.models import *
 import json
 
-id2 = 1
+id2 = 3
 
 def home(request):
     usuarios_obj = Usuario.objects.get(id_usuario = id2)
@@ -11,13 +11,13 @@ def home(request):
 
 def mis_incentivos(request):
     usuarios_obj = Usuario.objects.get(id_usuario = id2)
-    puntos = Puntos.objects.get(Usuario_id_usuario = id2)
-    return render(request, 'mis_incentivos.html', {'nombre':usuarios_obj.nombre, 'codigo':usuarios_obj.id_usuario, 'puntos':puntos.cantidad_puntos, 'fecha':puntos.fecha_puntos})
+    puntos_todos = Puntos.objects.filter(Usuario_id_usuario_id = id2)
+    return render(request, 'mis_incentivos.html', {'puntos_todos': puntos_todos,'nombre':usuarios_obj.nombre})
 
 def mi_actividad(request):
     usuarios_obj = Usuario.objects.get(id_usuario = id2)
-    puntos = Puntos.objects.get(Usuario_id_usuario = id2)
-    return render(request, 'mi_actividad.html', {'nombre':usuarios_obj.nombre, 'codigo': usuarios_obj.id_usuario,'tipo_actividad': puntos.cantidad_puntos})
+    actividades = Actividad.objects.filter(Usuario_id_usuario_id = id2)
+    return render(request, 'mi_actividad.html', {'actividades': actividades,'nombre':usuarios_obj.nombre})
 
 def filtrar_por(request):
     return render(request, 'filtrar_por.html')
@@ -57,6 +57,11 @@ def etiquetaExito(request):
         pruebaEtiquetas = json.load(f)
         jsonString = json.dumps(pruebaEtiquetas)
     
+        
     db_etiqueta = Etiqueta(id_archivo = id_archivo1, etiqueta = jsonString, Usuario_id_usuario_id = usuarios_obj.id_usuario, caneca='Plastico')
     db_etiqueta.save()
-    return render(request, 'exito_Etiquetado.html', {'material': material})
+    db_actividad = Actividad(Usuario_id_usuario_id = usuarios_obj.id_usuario, tipo_actividad = 'etiquetado')
+    db_actividad.save()
+    db_puntos = Puntos(cantidad_puntos = 5, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+    db_puntos.save()
+    return render(request, 'exito_Etiquetado.html')
