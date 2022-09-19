@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from app_1.models import *
 import json
 
-id2 = 3
+id2 = 1
 
 def home(request):
     usuarios_obj = Usuario.objects.get(id_usuario = id2)
