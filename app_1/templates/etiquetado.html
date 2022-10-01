@@ -421,6 +421,39 @@
                   <h2><font face="Montserrat" color="#0000"><b>Etiquetado de residuos</b></font></h2>
             </div>
             <div style="padding-left: 3em; padding-bottom: 6em">
+
+                <div style="padding-left: 25em; padding-right: 25em; padding-bottom:3em;">
+                    <div class="color4 borde1" style="padding: 0.5em;">
+                        <input class="form-control" type="file" id="filepicker" name="fileList" webkitdirectory  required/>
+                    </div>
+                        <div style="padding-top:2em;">
+                            <select class="form-select" id="listing" style="border: 3px solid #007491;" size="7" aria-label="size 7 select example" type="text" name="material" required></select>
+                                <script>
+                                    var temp = "";
+                                    let archivos = [];
+                                    let listar = document.getElementById("listado"); 
+                                    document.getElementById("filepicker").addEventListener("change", (event) => {
+                                    let output = document.getElementById("listing");
+                                    for (const file of event.target.files) {
+                                        console.log(file);
+                                        let item = document.createElement("li");
+                                        item.textContent = file.webkitRelativePath.replace(file.name,"");
+                                        if(temp != item.textContent){
+                                        archivos.push(item.textContent);
+                                        console.log(item);
+                                        }
+                                        temp = item.textContent;
+                                    };
+                                    archivos.forEach((elemento) => {
+                                        output.innerHTML += `<option>${elemento}</option>`
+                                    })
+                                    }, false);
+                                </script>
+                            </select>
+                        </div>
+                </div>
+
+                
                 <form action="/etiqueta_exito/" method="POST">
                     {% csrf_token %}
             <div class="color4 borde1" style="margin-left: 30em; margin-right: 28em; padding: 0.5em;">
