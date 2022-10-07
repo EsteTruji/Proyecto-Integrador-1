@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from app_1.models import *
 import json
+import os
 
 id2 = 1
 
@@ -24,6 +25,9 @@ def filtrar_por(request):
 
 def etiquetado(request):
     return render(request, 'etiquetado.html')
+
+def realizar_etiquetado(request):
+    return render(request, 'realizar_etiquetado.html')    
 
 def etiquetaExito(request):
     usuarios_obj = Usuario.objects.get(id_usuario = id2)
@@ -50,15 +54,16 @@ def etiquetaExito(request):
         'Damage': damage
     }
 
-    with open ('prueba.json', 'w') as f:
+    dir = "direccion de la carpeta abierta"
+
+    with open (os.path.join(dir, 'Etiqueta.json'), 'w') as f:
         json.dump(pruebaEtiquetas, f)
 
-    with open('prueba.json','r') as f:
+    with open(os.path.join(dir, 'Etiqueta.json'), 'r') as f:
         pruebaEtiquetas = json.load(f)
-        jsonString = json.dumps(pruebaEtiquetas)
-    
         
-    db_etiqueta = Etiqueta(id_archivo = id_archivo1, etiqueta = jsonString, Usuario_id_usuario_id = usuarios_obj.id_usuario, caneca='Plastico')
+        
+    db_etiqueta = Etiqueta(id_archivo = id_archivo1, Usuario_id_usuario_id = usuarios_obj.id_usuario, caneca='Plastico', Material = material, Package_color = package_color, Bottle_cap = bottle_cap, Dirtiness= dirtiness, Packaging_type = packaging_type, Brand = brand, Reference = reference, Capacity = capacity, Damage = damage)
     db_etiqueta.save()
     db_actividad = Actividad(Usuario_id_usuario_id = usuarios_obj.id_usuario, tipo_actividad = 'etiquetado')
     db_actividad.save()

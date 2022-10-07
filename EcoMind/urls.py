@@ -25,4 +25,5 @@ urlpatterns = [
     path('filtrar_por/', app1Views.filtrar_por),
     path('etiquetado/', app1Views.etiquetado),
     path('etiqueta_exito/', app1Views.etiquetaExito),
+    path('realizar_etiquetado/', app1Views.realizar_etiquetado),
 ]
