@@ -450,7 +450,7 @@
                     {% csrf_token %}
             <div class="color4 borde1" style="margin-left: 28em; margin-right: 28em; padding: 0.5em;">
                 
-                <input class="form-control" type="file" id="file-input" accept="image/png, image/jpeg" onchange="preview()" multiple>
+                <input class="form-control" name='id_archivo' type="file" id="file-input" accept="image/png, image/jpeg" onchange="preview()" multiple>
             </div>
                 
                 <div style="padding-top:2em;padding-bottom:2em;" id="images"></div>
@@ -548,9 +548,9 @@
                                 <td style="border: 3px solid #264d53;">
                                     <select class="form-select" style="border: 3px solid #007491;" size="4" aria-label="size 4 select example" type="text" name="bottle_cap" required>
                                         
-                                        <option value="N/A">N/A (No aplica)</option>
-                                        <option value="TRUE">Sí tiene</option>
-                                        <option value="FALSE">No tiene</option>
+                                        <option value=>N/A (No aplica)</option>
+                                        <option value=True>Sí tiene</option>
+                                        <option value=False>No tiene</option>
                                     </select>
                                 </td>
                                 <td style="border: 3px solid #264d53;">

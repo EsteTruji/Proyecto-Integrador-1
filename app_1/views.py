@@ -56,11 +56,11 @@ def etiquetaExito(request):
 
     dir = "direccion de la carpeta abierta"
 
-    with open (os.path.join(dir, 'Etiqueta.json'), 'w') as f:
-        json.dump(pruebaEtiquetas, f)
+    #with open (os.path.join(dir, 'Etiqueta.json'), 'w') as f:
+    #    json.dump(pruebaEtiquetas, f)
 
-    with open(os.path.join(dir, 'Etiqueta.json'), 'r') as f:
-        pruebaEtiquetas = json.load(f)
+    #with open(os.path.join(dir, 'Etiqueta.json'), 'r') as f:
+    #    pruebaEtiquetas = json.load(f)
         
         
     db_etiqueta = Etiqueta(id_archivo = id_archivo1, Usuario_id_usuario_id = usuarios_obj.id_usuario, caneca='Plastico', Material = material, Package_color = package_color, Bottle_cap = bottle_cap, Dirtiness= dirtiness, Packaging_type = packaging_type, Brand = brand, Reference = reference, Capacity = capacity, Damage = damage)
