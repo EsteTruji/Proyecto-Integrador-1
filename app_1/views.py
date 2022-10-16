@@ -42,6 +42,7 @@ def etiquetaExito(request):
     damage = request.POST['damage']
     id_archivo1 = request.POST['id_archivo']
 
+
     pruebaEtiquetas = {
         'Material': material,
         'Package color': package_color,
@@ -54,19 +55,24 @@ def etiquetaExito(request):
         'Damage': damage
     }
 
-    dir = "direccion de la carpeta abierta"
+    nombre_archivo = id_archivo1.split() 
+    id_archivo1 = nombre_archivo[0];   
 
-    with open (os.path.join(dir, 'Etiqueta.json'), 'w') as f:
+    nombre_carpeta = "Observaciones"
+    ruta = os.path.abspath(nombre_carpeta)
+
+    with open (os.path.join(ruta, id_archivo1+'.json'), 'w') as f:
         json.dump(pruebaEtiquetas, f)
 
-    with open(os.path.join(dir, 'Etiqueta.json'), 'r') as f:
-        pruebaEtiquetas = json.load(f)
+    '''with open(os.path.join(dir, 'Etiqueta.json'), 'r') as f:
+        pruebaEtiquetas = json.load(f)'''
         
         
-    db_etiqueta = Etiqueta(id_archivo = id_archivo1, Usuario_id_usuario_id = usuarios_obj.id_usuario, caneca='Plastico', Material = material, Package_color = package_color, Bottle_cap = bottle_cap, Dirtiness= dirtiness, Packaging_type = packaging_type, Brand = brand, Reference = reference, Capacity = capacity, Damage = damage)
+    db_etiqueta = Etiqueta(id_archivo = id_archivo1, Usuario_id_usuario_id = usuarios_obj.id_usuario, Material = material, Package_color = package_color, Bottle_cap = bottle_cap, Dirtiness= dirtiness, Packaging_type = packaging_type, Brand = brand, Reference = reference, Capacity = capacity, Damage = damage)
     db_etiqueta.save()
     db_actividad = Actividad(Usuario_id_usuario_id = usuarios_obj.id_usuario, tipo_actividad = 'etiquetado')
     db_actividad.save()
     db_puntos = Puntos(cantidad_puntos = 5, Usuario_id_usuario_id = usuarios_obj.id_usuario)
     db_puntos.save()
+    nombre_archivo = []
     return render(request, 'exito_Etiquetado.html')

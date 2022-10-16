@@ -353,8 +353,8 @@
                 </div>
                 <div class="item separator borde">
                     <a href="../mis_incentivos/">
-                        <div class="icon"><abbr title="Mis incentivos"><img style="padding-top:0.5em; padding-bottom:0.5em;" src="https://i.postimg.cc/pVzgyyvQ/1140033.png" alt=""></abbr></div>
-                        <div class="title" style="margin-top: 0.5em;"><span2><h6><font face="Poppins">Mis incentivos</font></h6></span2></div>
+                        <div class="icon"><abbr title="Mis Puntos"><img style="padding-top:0.5em; padding-bottom:0.5em;" src="https://i.postimg.cc/pVzgyyvQ/1140033.png" alt=""></abbr></div>
+                        <div class="title" style="margin-top: 0.5em;"><span2><h6><font face="Poppins">Mis Puntos</font></h6></span2></div>
                     </a>
                 </div>
                 <div class="item separator borde">
@@ -420,72 +420,20 @@
   
             <div style="text-align:center; margin-top:30px; margin-bottom:24px;padding-left:0em;">
                   <h2><font style="padding-bottom: 1em;" face="Poppins" color="#0000"><b>Etiquetado de residuos</b></font></h2>
-                  <img width="40%" src="https://i.postimg.cc/6pf4rCW2/Selecciona-la-carpeta-ra-z-donde-est-n-las-dem-s-carpetas-1.png" alt="">
+                  <img width="40%" src="https://i.postimg.cc/wxbxNhn4/Selecciona-la-carpeta-ra-z-donde-est-n-las-dem-s-carpetas-2-1.png" alt="">
             </div>
             
             <div style="padding-left: 0em; padding-bottom: 6em">
             
                 <div style="padding-bottom: 15px; padding-left:13em; padding-right: 13em;">
-                    <form action="/realizar_etiquetado/" method="POST">
-                        {% csrf_token %}
-                    <div class="color4 borde1" style="padding: 0.5em; margin-left: 13em; margin-right: 13em;">
-                        <input class="form-control" type="file" id="filepicker" name="fileList" webkitdirectory  required/>
-                    </div>
-                        <div style="padding-top:2em; margin-left: 13em; margin-right: 13em;">
-                            <select class="form-select" id="listing" style="border: 3px solid #007491; text-align: center;" size="7" aria-label="size 7 select example" type="text" name="material" required></select>
-                            <script>
-                                var temp = "";
-                                let archivos = [];
-                                let lista = "";
-                                let patron = /(.*\.json)/;
-                                let result;
-                                let item;
-                                let listar = document.getElementById("listado"); 
-                                document.getElementById("filepicker").addEventListener("change", (event) => {
-                                let output = document.getElementById("listing");
-                                for (const file of event.target.files) {
-                                    item = document.createElement("li");
-                                    item.textContent = file.webkitRelativePath.replace(file.name,"");
-                                  
-                                    if(temp == item.textContent){
-                                        lista = lista + file.webkitRelativePath;
-                                        result = patron.exec(file.webkitRelativePath);
-                                    }else{
-                                        if(result != null){
-                                            archivos.push(temp + "✅");
-                                        }else{
-                                            if(temp != ""){
-                                                archivos.push(temp + "✖️");
-                                            }
-                                        }
-                                        lista = [];
-                                        lista = lista + file.webkitRelativePath;
-                                        
-                                    }
-                                    temp = item.textContent;
-                                };
-                                if(result != null){
-                                            archivos.push(item.textContent + "✅");
-                                            
-                                }else{
-                                    if(temp != ""){
-                                        archivos.push(item.textContent + "✖️");
-                                    }
-                                }
-                            
-                                
-                                archivos.forEach((elemento) => {
-                                    output.innerHTML += `<option>${elemento} <b> - Directorio </b> </option>`
-                                })
-                                }, false);
-                            </script>
-
-                            </select>
-                        </div>
                     <div style="text-align: center; padding-top: 1em">
-                        <button type="submit" class="btn btn-primary btn-lg" style=" border: 3px solid rgb(0, 103, 172);"><font face="Poppins">Seleccionar observación</font></button>    
+                        1. <a href="https://download939.mediafire.com/csuovjsxapjg/v2oura14ge11un4/Guia_de_etiquetado.pdf" class="btn btn-primary btn-lg" style=" border: 3px solid rgb(0, 103, 172);"><font face="Poppins"><h6>Descargar <br> Guía de Etiquetado</h6></font></a>    
+                        &nbsp;&nbsp;
+
+                    
+                        2. <a href="../realizar_etiquetado/" class="btn btn-primary btn-lg" style=" border: 3px solid rgb(0, 103, 172);"><font face="Poppins">Realizar etiquetado</font></a>    
                     </div>
-                </form>
+                
                 </div>
         </div>
     </body>

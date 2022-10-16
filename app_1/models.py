@@ -5,15 +5,15 @@ from django.db import models
 class Usuario(models.Model):
 	id_usuario = models.AutoField(primary_key=True, blank=False)
 	nombre = models.CharField(max_length=45, null=False)
+	total_puntos = models.PositiveIntegerField(default=0)
 
 class Etiqueta(models.Model):
 	id_archivo = models.CharField(max_length=150, null = True, blank=False)
 	Usuario_id_usuario = models.ForeignKey(Usuario, null= False, blank=False, on_delete=models.CASCADE)
-	caneca = models.CharField(max_length=45, null = True, blank=False, choices=(('Ordinario','Ordinario'), ('Papel_Carton','Papel_Carton'), ('Plastico','Plastico'), ('Vidrio','Vidrio'), ('Organicos','Organicos'), ('Residuos_Peligrosos','Residuos_Peligrosos'), ('Aluminio','Aluminio')))
 	fecha_etiquetado = models.DateTimeField(auto_now_add=True)
 	Material = models.CharField(max_length=45, null = True, blank=False)
 	Package_color = models.CharField(max_length=45, null = True, blank=False)
-	Bottle_cap = models.BooleanField(null=True, blank=False)
+	Bottle_cap = models.CharField(max_length=45, null=True, blank=False)
 	Dirtiness = models.CharField(max_length=45, null=True, blank=False)
 	Packaging_type = models.CharField(max_length=45, null=True, blank=False)
 	Brand = models.CharField(max_length=45, null=True, blank=False)
