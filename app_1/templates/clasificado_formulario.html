@@ -394,57 +394,11 @@
           </div>
       <div style="padding-top:2em;">
           <div>
-            <h2 style="text-align:center; padding-left:1em;"><b><font face=Poppins> ¡Bienvenid@ a la sección <b class="color1"> Mi actividad! </font></b></h2>  
+            <h2 style="text-align:center;"><b><font face=Poppins> ¡Bienvenid@ a <b class="color1"> Clasificado por formulario! </font></b></h2>  
           </div>
-          <div style="text-align:center;padding-top:1em; padding-bottom: 2em;">
-            <img  class="box"
-            width="170"
-            alt="WhatsApp Logo"
-            src="https://i.postimg.cc/q7PT9jv1/tiempo.png"
-            /></div>
+          
 
-        <div style="padding-bottom: 15px; padding-left:13em; padding-right: 13em;">
-            <div class="color4 borde1" style="padding: 1em;">
-                <div>
-                    <h4 align="center" class="center titulo5 mt-4 mb-4"><font face="Poppins" color="#0000">En esta sección puedes revisar tu historial de uso del sistema <b class="color1">Eco</b><b class="color2">Mind!</b> y ver cuántas veces lo has usado, en cuáles canecas registradas has depositado residuos correctamente, y además mirar qué tipos de residuos has depositado.</font></h4>
-                    <h2 align="center" class="center titulo5 mt-4 mb-4" ><font face="Poppins" color="#0000">🤩 ¿No es increíble? 🤩</font></h2>  
-                </div>
-            </div>
-        </div>
-
-          <div style="text-align:center; margin-top:20px; margin-bottom:18px;padding-left:2em;">
-                <h2><font face="Poppins" color="#0000"><b>Actividad del usuario</b></font></h2>
-          </div>
-
-        <div style="padding-left:12em; padding-right:12em;">
-          <table class="table table-hover table-bordered" style="background:#65ff72; border-color: #3753b1; ">
-            <thead>
-              <tr>
-                <th style="background: #21318f; color:rgb(209, 209, 209);" scope="col">#</th>
-                <th style="background: #21318f; color:rgb(209, 209, 209);" scope="col">Nombre</th>
-                <th style="background: #21318f; color:rgb(209, 209, 209);" scope="col">Código</th>
-                <th style="background: #21318f; color:rgb(209, 209, 209);" scope="col">Tipo de actividad</th>
-                <th style="background: #21318f; color:rgb(209, 209, 209);" scope="col">Fecha de actividad</th>
-              </tr>
-            </thead>
-            <tbody>
-            {% for actividad in actividades %}
-              <tr>
-                <td style="background: #21318f; color:rgb(209, 209, 209);">{{forloop.counter}}</th>
-                <td style="background: #5066e4; color:rgb(255, 255, 255);">{{nombre}}</td>
-                <td style="background: #5066e4; color:rgb(255, 255, 255);">{{actividad.Usuario_id_usuario_id}}</td>
-                <td style="background: #5066e4; color:rgb(255, 255, 255);">{{actividad.tipo_actividad}}</td>
-                <td style="background: #5066e4; color:rgb(255, 255, 255);">{{actividad.fecha_actividad}}</td>
-              </tr>           
-            {% endfor %}
-              
-            </tbody>
-          </table>
-          </div>
-    
-
-    </div>
-
-    
+        
+    </div>   
     </body>
     </html>

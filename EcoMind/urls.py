@@ -26,4 +26,7 @@ urlpatterns = [
     path('etiquetado/', app1Views.etiquetado),
     path('etiqueta_exito/', app1Views.etiquetaExito),
     path('realizar_etiquetado/', app1Views.realizar_etiquetado),
+    path('clasificado/', app1Views.clasificado),
+    path('clasificado_etiqueta/', app1Views.clasificado_etiqueta),
+    path('clasificado_formulario/', app1Views.clasificado_formulario),
 ]

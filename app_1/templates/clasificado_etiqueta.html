@@ -394,57 +394,100 @@
           </div>
       <div style="padding-top:2em;">
           <div>
-            <h2 style="text-align:center; padding-left:1em;"><b><font face=Poppins> ¡Bienvenid@ a la sección <b class="color1"> Mi actividad! </font></b></h2>  
+            <h2 style="text-align:center;"><b><font face=Poppins> ¡Bienvenid@ a <b class="color1"> Clasificado por etiqueta! </font></b></h2>  
           </div>
-          <div style="text-align:center;padding-top:1em; padding-bottom: 2em;">
-            <img  class="box"
-            width="170"
-            alt="WhatsApp Logo"
-            src="https://i.postimg.cc/q7PT9jv1/tiempo.png"
-            /></div>
-
-        <div style="padding-bottom: 15px; padding-left:13em; padding-right: 13em;">
-            <div class="color4 borde1" style="padding: 1em;">
-                <div>
-                    <h4 align="center" class="center titulo5 mt-4 mb-4"><font face="Poppins" color="#0000">En esta sección puedes revisar tu historial de uso del sistema <b class="color1">Eco</b><b class="color2">Mind!</b> y ver cuántas veces lo has usado, en cuáles canecas registradas has depositado residuos correctamente, y además mirar qué tipos de residuos has depositado.</font></h4>
-                    <h2 align="center" class="center titulo5 mt-4 mb-4" ><font face="Poppins" color="#0000">🤩 ¿No es increíble? 🤩</font></h2>  
-                </div>
-            </div>
-        </div>
-
-          <div style="text-align:center; margin-top:20px; margin-bottom:18px;padding-left:2em;">
-                <h2><font face="Poppins" color="#0000"><b>Actividad del usuario</b></font></h2>
-          </div>
-
-        <div style="padding-left:12em; padding-right:12em;">
-          <table class="table table-hover table-bordered" style="background:#65ff72; border-color: #3753b1; ">
-            <thead>
-              <tr>
-                <th style="background: #21318f; color:rgb(209, 209, 209);" scope="col">#</th>
-                <th style="background: #21318f; color:rgb(209, 209, 209);" scope="col">Nombre</th>
-                <th style="background: #21318f; color:rgb(209, 209, 209);" scope="col">Código</th>
-                <th style="background: #21318f; color:rgb(209, 209, 209);" scope="col">Tipo de actividad</th>
-                <th style="background: #21318f; color:rgb(209, 209, 209);" scope="col">Fecha de actividad</th>
-              </tr>
-            </thead>
-            <tbody>
-            {% for actividad in actividades %}
-              <tr>
-                <td style="background: #21318f; color:rgb(209, 209, 209);">{{forloop.counter}}</th>
-                <td style="background: #5066e4; color:rgb(255, 255, 255);">{{nombre}}</td>
-                <td style="background: #5066e4; color:rgb(255, 255, 255);">{{actividad.Usuario_id_usuario_id}}</td>
-                <td style="background: #5066e4; color:rgb(255, 255, 255);">{{actividad.tipo_actividad}}</td>
-                <td style="background: #5066e4; color:rgb(255, 255, 255);">{{actividad.fecha_actividad}}</td>
-              </tr>           
-            {% endfor %}
-              
-            </tbody>
-          </table>
-          </div>
-    
-
+          
+          <form action="/clasificado_etiqueta/" method="POST">
+            {% csrf_token %}
+    <div style="padding-top:2em;padding-bottom:2em;">
+    <div class="color4 borde1" style="margin-left: 28em; margin-right: 28em; padding: 0.5em;">
+        
+        <input class="form-control" type="file" id="file-input" accept=".json" required>
     </div>
-
+    <div style="padding-top: 2em;">
+        <table style="text-align:left; background:none; border:none;">
+            <tr style="background:none; border:none;">
+                <th style="background:none; border:none;">
+                    <img style="border-radius: 2em;" width=350 src={{enlace}} alt="">
+            </th>
+                <th style="background:none; border:none; padding-left: 3em;">
+                    <div style="text-align: center; padding-top:2em;">     
+                        <h4><font face="Poppins" color="#0000"><b>Selecciona una etiqueta</b></font></h4>
+                    </div>
+                    <div>
+                        <select class="form-select" id="images" style="margin-bottom:5px; border: 3px solid #007491; text-align: center;" size="7" aria-label="size 7 select example" type="text" name="archivo" required></select>
+                    </div>
+                    <div style="padding-top: 0.5em; padding-left: 1.7em;">        
+                        <button type="submit" class="btn btn-primary btn-lg" style=" border: 3px solid rgb(0, 103, 172);"><font face="Poppins">Clasificar residuo </font></button>
+                        </div>
+                    </div> 
+                </th>
+            </tr>  
+        </table>
+    </div>
+                   
+    <script type="text/javascript">
+        
+        let test = [];
+        let patron = /(.*\.png)/;
+        let patron2 = /(.*\.jpg)/;
+        let patron3 = /(.*\.json)/;
+        let temp2 = " ";
+        let text = "";
+        let arch = [];
+        let archFinal = [];
+        let nn = 0;
+        let imagen = [];
+        let item2;
+        var imag = new Image();
+        let prueba = [];
+        document.getElementById("file-input").addEventListener("change", (event) => {
+            
+            archFinal = [];
+            let fileInput = document.getElementById("file-input");
+            let imageContainer = document.getElementById("images");
+            imageContainer.innerHTML = "";
+            console.log("length: "+ event.target.files.length);
+            //for(const file of event.target.files){
+                for(var f = event.target.files.length-1; f >= 0; f--){
+                    const file = event.target.files[f];
+                    prueba.push(event.target.files[f]);
+                    let figCap = document.createElement("figcaption");
+                    figCap.innerText = file.name;
+                    text = figCap.innerText;
+                    imagen.push(text);
+                    archFinal.push(imagen);
+                    imagen = [];
+                    
+                    //imageContainer.appendChild(figure);    
+                }
+            //}
     
+            
+            let temp3 = " ";
+            let temp4 = " ";
+            let tempComp;
+            let incl = false;
+            let tag = false;
+            let pos = 0;
+    
+            for(var j = 0; j < archFinal.length; j++){
+                    imageContainer.innerHTML += `<option selected value="${archFinal[j][0]}">${archFinal[j][0]} <b> - Etiqueta </b> </option>`;
+                };
+            arch = [];
+            
+            temp3 = " ";
+    
+            
+            
+        }, false);
+    
+    </script>
+
+</form>
+        <div class="color4 borde1" style="margin-left: 15em;margin-right: 15em;text-align: center; margin-top: 3em; padding:1em;">
+            <h4 style="text-align:center;"><font face=Poppins><b>Material:</b> {{Material}}  &nbsp; |  &nbsp; <b>Color de empaque:</b> {{Package_color}}  &nbsp; <br> &nbsp;   <b>Tapa de botella:</b> {{Bottle_cap}}  &nbsp; |  &nbsp; <b>Suciedad:</b> {{Dirtiness}} &nbsp;  <br> &nbsp;<b>Tipo de empaque:</b> {{Packaging_type}}  &nbsp; | &nbsp;  <b>Marca:</b> {{Brand}}&nbsp;   <br> &nbsp;  <b>Referencia:</b> {{Reference}}  &nbsp; |&nbsp;  <b>Capacidad:</b> {{Capacity}} &nbsp; |  &nbsp;<b>Daño:</b> {{Damage}}</font></h4>
+        </div>
+    </div>   
     </body>
-    </html>
+</html>

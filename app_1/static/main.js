@@ -22,6 +22,7 @@ brand.style.display = "none";
 var damage = document.getElementById("damage"); 
 damage.style.display = "none";
 
+
 function fadeOutEffect(idSubtipo, ...elements){
     var subtypeElement = document.getElementById(idSubtipo);
     console.log(idSubtipo);
@@ -39,6 +40,7 @@ function fadeOutEffect(idSubtipo, ...elements){
         }
     }
 }
+
 
 function fadeInEffect(idSubtipo, ...elements){
     var elementSelected = document.getElementById(idSubtipo);
@@ -115,6 +117,7 @@ tipoSelect1.addEventListener("change", event => {
         case "Aluminium":
             package_color.style.display = "none";
             package_color.style.display = "block";
+            packaging_type.style.display = "block";
             fadeInEffect("package_color", "N/A");
             fadeOutEffect("package_color", "Clear transparent", "White transparent", "Red transparent", "Green transparent", "Brown transparent", "Blue transparent", "Colored transparent", "White opaque", "Blue opaque", "Green opaque", "Brown opaque", "Black opaque", "Colored opaque", "Yellow", "Orange", "Purple", "Gray", "Other color");
             break;
@@ -122,41 +125,48 @@ tipoSelect1.addEventListener("change", event => {
             package_color.style.display = "none";
             package_color.style.display = "none";
             package_color.style.display = "block";
+            packaging_type.style.display = "block";
             fadeInEffect("package_color", "N/A");
             fadeOutEffect("package_color", "Clear transparent", "White transparent", "Red transparent", "Green transparent", "Brown transparent", "Blue transparent", "Colored transparent", "White opaque", "Blue opaque", "Green opaque", "Brown opaque", "Black opaque", "Colored opaque", "Yellow", "Orange", "Purple", "Gray", "Other color");
             break;
         case "Cardboard":
             package_color.style.display = "none";
             package_color.style.display = "block";
+            packaging_type.style.display = "block";
             fadeInEffect("package_color", "N/A");
             fadeOutEffect("package_color", "Clear transparent", "White transparent", "Red transparent", "Green transparent", "Brown transparent", "Blue transparent", "Colored transparent", "White opaque", "Blue opaque", "Green opaque", "Brown opaque", "Black opaque", "Colored opaque", "Yellow", "Orange", "Purple", "Gray", "Other color");
             break;
         case "Paper print":
             package_color.style.display = "none";
             package_color.style.display = "block";
+            packaging_type.style.display = "block";
             fadeInEffect("package_color", "N/A");
             fadeOutEffect("package_color", "Clear transparent", "White transparent", "Red transparent", "Green transparent", "Brown transparent", "Blue transparent", "Colored transparent", "White opaque", "Blue opaque", "Green opaque", "Brown opaque", "Black opaque", "Colored opaque", "Yellow", "Orange", "Purple", "Gray", "Other color");
             break;
         case "Newspaper":
             package_color.style.display = "none";
             package_color.style.display = "block";
+            packaging_type.style.display = "block";
             fadeInEffect("package_color", "N/A");
             fadeOutEffect("package_color", "Clear transparent", "White transparent", "Red transparent", "Green transparent", "Brown transparent", "Blue transparent", "Colored transparent", "White opaque", "Blue opaque", "Green opaque", "Brown opaque", "Black opaque", "Colored opaque", "Yellow", "Orange", "Purple", "Gray", "Other color");
             break;
         case "Magazine":
             package_color.style.display = "block";
+            packaging_type.style.display = "block";
             fadeInEffect("package_color", "N/A");
             fadeOutEffect("package_color", "Clear transparent", "White transparent", "Red transparent", "Green transparent", "Brown transparent", "Blue transparent", "Colored transparent", "White opaque", "Blue opaque", "Green opaque", "Brown opaque", "Black opaque", "Colored opaque", "Yellow", "Orange", "Purple", "Gray", "Other color");
             break;
         case "Tetrapack":
             package_color.style.display = "none";
             package_color.style.display = "block";
+            packaging_type.style.display = "block";
             fadeInEffect("package_color", "N/A");
             fadeOutEffect("package_color", "Clear transparent", "White transparent", "Red transparent", "Green transparent", "Brown transparent", "Blue transparent", "Colored transparent", "White opaque", "Blue opaque", "Green opaque", "Brown opaque", "Black opaque", "Colored opaque", "Yellow", "Orange", "Purple", "Gray", "Other color");
             break;
         case "Other":
             package_color.style.display = "none";
             package_color.style.display = "block";
+            packaging_type.style.display = "block";
             fadeInEffect("package_color", "N/A");
             fadeOutEffect("package_color", "Clear transparent", "White transparent", "Red transparent", "Green transparent", "Brown transparent", "Blue transparent", "Colored transparent", "White opaque", "Blue opaque", "Green opaque", "Brown opaque", "Black opaque", "Colored opaque", "Yellow", "Orange", "Purple", "Gray", "Other color");
             break;  
@@ -194,6 +204,7 @@ tipoSelect3.addEventListener("change", event => {
         case "Can":
             bottle_cap.style.display = "none";
             bottle_cap.style.display = "block";
+            capacity.style.display = "block";
             fadeInEffect("bottle_cap", "N/A");
             fadeOutEffect("bottle_cap", "TRUE", "FALSE");
             fadeOutEffect("capacity", "N/A");
@@ -202,6 +213,8 @@ tipoSelect3.addEventListener("change", event => {
         case "Bag":
             bottle_cap.style.display = "none";
             bottle_cap.style.display = "block";
+            capacity.style.display = "block";
+            dirtiness.style.display = "block";
             fadeInEffect("bottle_cap", "N/A");
             fadeOutEffect("bottle_cap", "TRUE", "FALSE");
             fadeInEffect("capacity", "N/A");
@@ -210,6 +223,7 @@ tipoSelect3.addEventListener("change", event => {
         case "Box":
             bottle_cap.style.display = "none";
             bottle_cap.style.display = "block";
+            capacity.style.display = "block";
             fadeInEffect("bottle_cap", "N/A");
             fadeOutEffect("bottle_cap", "TRUE", "FALSE");
             fadeOutEffect("capacity", "N/A");
@@ -226,6 +240,8 @@ tipoSelect3.addEventListener("change", event => {
         case "Wrapping":
             bottle_cap.style.display = "none";
             bottle_cap.style.display = "block";
+            capacity.style.display = "block";
+            dirtiness.style.display = "block";
             fadeInEffect("bottle_cap", "N/A");
             fadeOutEffect("bottle_cap", "TRUE", "FALSE");
             fadeInEffect("capacity", "N/A");
@@ -234,6 +250,8 @@ tipoSelect3.addEventListener("change", event => {
         case "Lid":
             bottle_cap.style.display = "none";
             bottle_cap.style.display = "block";
+            capacity.style.display = "block";
+            dirtiness.style.display = "block";
             fadeInEffect("bottle_cap", "N/A");
             fadeOutEffect("bottle_cap", "TRUE", "FALSE");
             fadeInEffect("capacity", "N/A");
@@ -242,6 +260,8 @@ tipoSelect3.addEventListener("change", event => {
         case "Sheet":
             bottle_cap.style.display = "none";
             bottle_cap.style.display = "block";
+            capacity.style.display = "block";
+            dirtiness.style.display = "block";
             fadeInEffect("bottle_cap", "N/A");
             fadeOutEffect("bottle_cap", "TRUE", "FALSE");
             fadeInEffect("capacity", "N/A");
@@ -250,6 +270,8 @@ tipoSelect3.addEventListener("change", event => {
         case "Other":
             bottle_cap.style.display = "none";
             bottle_cap.style.display = "block";
+            capacity.style.display = "block";
+            dirtiness.style.display = "block";
             fadeInEffect("bottle_cap", "N/A");
             fadeOutEffect("bottle_cap", "TRUE", "FALSE");
             fadeInEffect("capacity", "N/A");
@@ -384,8 +406,9 @@ tipoSelect7.addEventListener("change", event => {
         case "Other":
             reference.style.display = "none";
             reference.style.display = "block";
+            damage.style.display = "block";
             fadeInEffect("reference", "N/A");
-            fadeOutEffect("reference", "Zero", "Original", "Pony Malta", "Manzana", "Yogur", "Bonyur", "Chocolatina Jet", "Other", "Pepsi");
+            fadeOutEffect("reference", "Zero", "Original", "Pony Malta", "Manzana", "Yogurt", "Bonyurt", "Chocolatina Jet", "Other", "Pepsi");
             break
     }
             
@@ -398,6 +421,7 @@ console.log(tipoSelect8);
 tipoSelect8.addEventListener("change", event => {
     var elementSelected8 = tipoSelect8.options[tipoSelect8.selectedIndex].value;
     console.log(elementSelected8);
-            damage.style.display = "block";
+    fadeOutEffect("damage", "N/A");
+    damage.style.display = "block";
 
 });
