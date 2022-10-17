@@ -20,7 +20,7 @@ from app_1 import views as app1Views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', app1Views.home),
-    path('mis_incentivos/', app1Views.mis_incentivos),
+    path('mis_puntos/', app1Views.mis_puntos),
     path('mi_actividad/', app1Views.mi_actividad),
     path('filtrar_por/', app1Views.filtrar_por),
     path('etiquetado/', app1Views.etiquetado),

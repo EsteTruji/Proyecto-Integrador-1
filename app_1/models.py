@@ -31,6 +31,11 @@ class Actividad(models.Model):
 	tipo_actividad = models.CharField(max_length=45, null=False, blank=False, choices=(('etiquetado','etiquetado'),('clasificado','clasificado')))
 	fecha_actividad = models.DateTimeField(auto_now_add=True)
 
+class Clasificacion(models.Model):
+	Usuario_id_usuario = models.ForeignKey(Usuario, null= False, blank=False, on_delete=models.CASCADE)
+	id_archivo = models.CharField(max_length=150, null = True, blank=False)
+	fecha_actividad = models.DateTimeField(auto_now_add=True)
+
 #python manage.py makemigrations
 #python manage.py sqlmigrate app_1 0001
 #python manage.py migrate
