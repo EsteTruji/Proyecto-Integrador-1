@@ -179,98 +179,27 @@ def clasificado_formulario(request):
             capacidad = capacity
 
         if material == "Other plastic":
-            cpuntos = 1
-
             caneca = "caneca negra (residuos no aprovechables)"
             enlace_caneca = "https://i.postimg.cc/gjM4T4D1/137d264c-caneca-negra-para-separacion-de-residuos-y-reciclaje.png"
 
         elif dirtiness == "Clean" and damage == "Undamaged":
-            if "Material" == 'PET':
-                cpuntos = 2
-            elif "Material" == 'PE-HD':
-                cpuntos = 6
-            elif "Material" == 'PVC':
-                cpuntos = 7
-            elif "Material" == 'PE-LD':
-                cpuntos = 4
-            elif "Material" == 'PP':
-                cpuntos = 2
-            elif "Material" == 'PS':
-                cpuntos = 2
-            elif "Material" == 'Glass':
-                cpuntos = 2
-            elif "Material" == 'Aluminium':
-                cpuntos = 17
-            elif "Material" == 'Other metal':
-                cpuntos = 1
-            elif "Material" == 'Cardboard':
-                cpuntos = 2
-            elif "Material" == 'Paper print':
-                cpuntos = 1
-            elif "Material" == 'Newspaper':
-                cpuntos = 2
-            elif "Material" == 'Magazine':
-                cpuntos = 2
-            elif "Material" == 'Tetrapack':
-                cpuntos = 2
-            elif "Material" == 'Other':
-                cpuntos = 1
-
             caneca = "caneca blanca (residuos aprovechables)"
             enlace_caneca = "https://i.postimg.cc/vBC5gj0Y/7ec7efb0-caneca-blanca-para-separacion-de-residuos-y-reciclaje-150x150-1.png"
         
         elif dirtiness != "Clean":
-            cpuntos = 1
-
             caneca = "caneca negra (residuos no aprovechables)"
             enlace_caneca = "https://i.postimg.cc/gjM4T4D1/137d264c-caneca-negra-para-separacion-de-residuos-y-reciclaje.png"
         
         elif dirtiness == "Clean" and material != "Glass":
-            if "Material" == 'PET':
-                cpuntos = 2
-            elif "Material" == 'PE-HD':
-                cpuntos = 6
-            elif "Material" == 'PVC':
-                cpuntos = 7
-            elif "Material" == 'PE-LD':
-                cpuntos = 4
-            elif "Material" == 'PP':
-                cpuntos = 2
-            elif "Material" == 'PS':
-                cpuntos = 2
-            elif "Material" == 'Other plastic':
-                cpuntos = 1
-            elif "Material" == 'Aluminium':
-                cpuntos = 17
-            elif "Material" == 'Other metal':
-                cpuntos = 1
-            elif "Material" == 'Cardboard':
-                cpuntos = 2
-            elif "Material" == 'Paper print':
-                cpuntos = 1
-            elif "Material" == 'Newspaper':
-                cpuntos = 2
-            elif "Material" == 'Magazine':
-                cpuntos = 2
-            elif "Material" == 'Tetrapack':
-                cpuntos = 2
-            elif "Material" == 'Other':
-                cpuntos = 1
-
-
             caneca = "caneca blanca (residuos aprovechables)"
             enlace_caneca = "https://i.postimg.cc/vBC5gj0Y/7ec7efb0-caneca-blanca-para-separacion-de-residuos-y-reciclaje-150x150-1.png"
         
         elif damage != "Undamaged" and material == "Glass":
-            cpuntos = 1
-
             caneca = "caneca negra (residuos no aprovechables)"
             enlace_caneca = "https://i.postimg.cc/gjM4T4D1/137d264c-caneca-negra-para-separacion-de-residuos-y-reciclaje.png"
         
         db_actividad = Actividad(Usuario_id_usuario_id = usuarios_obj.id_usuario, tipo_actividad = 'clasificado')
         db_actividad.save()
-        db_puntos = Puntos(cantidad_puntos = cpuntos, Usuario_id_usuario_id = usuarios_obj.id_usuario)
-        db_puntos.save()
 
     except:
         archivo = ""
