@@ -33,6 +33,7 @@ def clasificado(request):
     return render(request, 'clasificado.html')
 
 def clasificado_etiqueta(request):
+    usuarios_obj = Usuario.objects.get(id_usuario = id2)
     try:
         archivo = request.POST['archivo']
     except:
@@ -46,29 +47,147 @@ def clasificado_etiqueta(request):
         ruta = os.path.abspath(nombre_carpeta)
         with open(os.path.join(ruta, archivo), 'r') as f:
             archivo2 = json.load(f)
+            
         if archivo2['Capacity'] != "N/A":
             capacidad = archivo2['Capacity'] + " ml"
         else:
             capacidad = archivo2['Capacity']
+
         if archivo2['Material'] == "Other plastic":
             caneca = "caneca negra (residuos no aprovechables)"
             enlace_caneca = "https://i.postimg.cc/gjM4T4D1/137d264c-caneca-negra-para-separacion-de-residuos-y-reciclaje.png"
+            
+            db_puntos = Puntos(cantidad_puntos = 1, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+            db_puntos.save()
+
         elif archivo2['Dirtiness'] == "Clean" and archivo2['Damage'] == "Undamaged":
+            if archivo2['Material'] == 'PET':
+                db_puntos = Puntos(cantidad_puntos = 2, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+            elif archivo2['Material'] == 'PE-HD':
+                db_puntos = Puntos(cantidad_puntos = 6, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+            elif archivo2['Material'] == 'PVC':
+                db_puntos = Puntos(cantidad_puntos = 7, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+            elif archivo2['Material'] == 'PE-LD':
+                db_puntos = Puntos(cantidad_puntos = 4, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+            elif archivo2['Material'] == 'PP':
+                db_puntos = Puntos(cantidad_puntos = 2, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+            elif archivo2['Material'] == 'PS':
+                db_puntos = Puntos(cantidad_puntos = 2, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+            elif archivo2['Material'] == 'Other plastic':
+                db_puntos = Puntos(cantidad_puntos = 1, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+            elif archivo2['Material'] == 'Glass':
+                db_puntos = Puntos(cantidad_puntos = 2, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+            elif archivo2['Material'] == 'Aluminium':
+                db_puntos = Puntos(cantidad_puntos = 17, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+            elif archivo2['Material'] == 'Other metal':
+                db_puntos = Puntos(cantidad_puntos = 1, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+            elif archivo2['Material'] == 'Cardboard':
+                db_puntos = Puntos(cantidad_puntos = 2, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+            elif archivo2['Material'] == 'Paper print':
+                db_puntos = Puntos(cantidad_puntos = 1, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+            elif archivo2['Material'] == 'Newspaper':
+                db_puntos = Puntos(cantidad_puntos = 2, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+            elif archivo2['Material'] == 'Magazine':
+                db_puntos = Puntos(cantidad_puntos = 2, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+            elif archivo2['Material'] == 'Tetrapack':
+                db_puntos = Puntos(cantidad_puntos = 2, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+            elif archivo2['Material'] == 'Other':
+                db_puntos = Puntos(cantidad_puntos = 1, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+
             caneca = "caneca blanca (residuos aprovechables)"
             enlace_caneca = "https://i.postimg.cc/vBC5gj0Y/7ec7efb0-caneca-blanca-para-separacion-de-residuos-y-reciclaje-150x150-1.png"
-        elif archivo2['Dirtiness'] != "Clean": 
+
+        elif archivo2['Dirtiness'] != "Clean":
+            db_puntos = Puntos(cantidad_puntos = 1, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+            db_puntos.save()
+
             caneca = "caneca negra (residuos no aprovechables)"
             enlace_caneca = "https://i.postimg.cc/gjM4T4D1/137d264c-caneca-negra-para-separacion-de-residuos-y-reciclaje.png"
+
+
         elif archivo2['Dirtiness'] == "Clean" and archivo2['Material'] != "Glass":
+
+            if archivo2['Material'] == 'PET':
+                db_puntos = Puntos(cantidad_puntos = 2, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+            elif archivo2['Material'] == 'PE-HD':
+                db_puntos = Puntos(cantidad_puntos = 6, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+            elif archivo2['Material'] == 'PVC':
+                db_puntos = Puntos(cantidad_puntos = 7, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+            elif archivo2['Material'] == 'PE-LD':
+                db_puntos = Puntos(cantidad_puntos = 4, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+            elif archivo2['Material'] == 'PP':
+                db_puntos = Puntos(cantidad_puntos = 2, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+            elif archivo2['Material'] == 'PS':
+                db_puntos = Puntos(cantidad_puntos = 2, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+            elif archivo2['Material'] == 'Other plastic':
+                db_puntos = Puntos(cantidad_puntos = 1, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+            elif archivo2['Material'] == 'Aluminium':
+                db_puntos = Puntos(cantidad_puntos = 17, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+            elif archivo2['Material'] == 'Other metal':
+                db_puntos = Puntos(cantidad_puntos = 1, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+            elif archivo2['Material'] == 'Cardboard':
+                db_puntos = Puntos(cantidad_puntos = 2, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+            elif archivo2['Material'] == 'Paper print':
+                db_puntos = Puntos(cantidad_puntos = 1, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+            elif archivo2['Material'] == 'Newspaper':
+                db_puntos = Puntos(cantidad_puntos = 2, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+            elif archivo2['Material'] == 'Magazine':
+                db_puntos = Puntos(cantidad_puntos = 2, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+            elif archivo2['Material'] == 'Tetrapack':
+                db_puntos = Puntos(cantidad_puntos = 2, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+            elif archivo2['Material'] == 'Other':
+                db_puntos = Puntos(cantidad_puntos = 1, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+
             caneca = "caneca blanca (residuos aprovechables)" 
             enlace_caneca = "https://i.postimg.cc/vBC5gj0Y/7ec7efb0-caneca-blanca-para-separacion-de-residuos-y-reciclaje-150x150-1.png"
+
+            
+
         elif archivo2['Damage'] != "Undamaged" and archivo2['Material'] == "Glass":
+            db_puntos = Puntos(cantidad_puntos = 1, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+            db_puntos.save()
+
             caneca = "caneca negra (residuos no aprovechables)"
             enlace_caneca = "https://i.postimg.cc/gjM4T4D1/137d264c-caneca-negra-para-separacion-de-residuos-y-reciclaje.png"
+
+        db_actividad = Actividad(Usuario_id_usuario_id = usuarios_obj.id_usuario, tipo_actividad = 'clasificado')
+        db_actividad.save()
 
         return render(request, 'clasificado_etiqueta.html', {'archivo':caneca, 'enlace': enlace_caneca, 'Material': archivo2['Material'], 'Package_color': archivo2['Package_color'],'Bottle_cap': archivo2['Bottle_cap'],'Dirtiness': archivo2['Dirtiness'], 'Packaging_type': archivo2['Packaging_type'], 'Brand': archivo2['Brand'], 'Reference': archivo2['Reference'], 'Capacity': capacidad, 'Damage': archivo2['Damage']})
 
 def clasificado_formulario(request):
+    usuarios_obj = Usuario.objects.get(id_usuario = id2)
     try:
         caneca = ""
         enlace_caneca = ""
@@ -81,25 +200,139 @@ def clasificado_formulario(request):
         reference = request.POST['reference']
         capacity = request.POST['capacity']
         damage = request.POST['damage']
+        
         if capacity != "N/A":
             capacidad = capacity + " ml"
         else:
             capacidad = capacity
+
         if material == "Other plastic":
+            db_puntos = Puntos(cantidad_puntos = 1, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+            db_puntos.save()
+
             caneca = "caneca negra (residuos no aprovechables)"
             enlace_caneca = "https://i.postimg.cc/gjM4T4D1/137d264c-caneca-negra-para-separacion-de-residuos-y-reciclaje.png"
+
         elif dirtiness == "Clean" and damage == "Undamaged":
+            if "Material" == 'PET':
+                db_puntos = Puntos(cantidad_puntos = 2, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+            elif "Material" == 'PE-HD':
+                db_puntos = Puntos(cantidad_puntos = 6, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+            elif "Material" == 'PVC':
+                db_puntos = Puntos(cantidad_puntos = 7, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+            elif "Material" == 'PE-LD':
+                db_puntos = Puntos(cantidad_puntos = 4, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+            elif "Material" == 'PP':
+                db_puntos = Puntos(cantidad_puntos = 2, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+            elif "Material" == 'PS':
+                db_puntos = Puntos(cantidad_puntos = 2, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+            elif "Material" == 'Other plastic':
+                db_puntos = Puntos(cantidad_puntos = 1, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+            elif "Material" == 'Glass':
+                db_puntos = Puntos(cantidad_puntos = 2, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+            elif "Material" == 'Aluminium':
+                db_puntos = Puntos(cantidad_puntos = 17, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+            elif "Material" == 'Other metal':
+                db_puntos = Puntos(cantidad_puntos = 1, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+            elif "Material" == 'Cardboard':
+                db_puntos = Puntos(cantidad_puntos = 2, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+            elif "Material" == 'Paper print':
+                db_puntos = Puntos(cantidad_puntos = 1, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+            elif "Material" == 'Newspaper':
+                db_puntos = Puntos(cantidad_puntos = 2, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+            elif "Material" == 'Magazine':
+                db_puntos = Puntos(cantidad_puntos = 2, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+            elif "Material" == 'Tetrapack':
+                db_puntos = Puntos(cantidad_puntos = 2, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+            elif "Material" == 'Other':
+                db_puntos = Puntos(cantidad_puntos = 1, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+
             caneca = "caneca blanca (residuos aprovechables)"
             enlace_caneca = "https://i.postimg.cc/vBC5gj0Y/7ec7efb0-caneca-blanca-para-separacion-de-residuos-y-reciclaje-150x150-1.png"
-        elif dirtiness != "Clean": 
+        
+        elif dirtiness != "Clean":
+            db_puntos = Puntos(cantidad_puntos = 1, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+            db_puntos.save()
+
             caneca = "caneca negra (residuos no aprovechables)"
             enlace_caneca = "https://i.postimg.cc/gjM4T4D1/137d264c-caneca-negra-para-separacion-de-residuos-y-reciclaje.png"
+        
         elif dirtiness == "Clean" and material != "Glass":
+            if "Material" == 'PET':
+                db_puntos = Puntos(cantidad_puntos = 2, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+            elif "Material" == 'PE-HD':
+                db_puntos = Puntos(cantidad_puntos = 6, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+            elif "Material" == 'PVC':
+                db_puntos = Puntos(cantidad_puntos = 7, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+            elif "Material" == 'PE-LD':
+                db_puntos = Puntos(cantidad_puntos = 4, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+            elif "Material" == 'PP':
+                db_puntos = Puntos(cantidad_puntos = 2, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+            elif "Material" == 'PS':
+                db_puntos = Puntos(cantidad_puntos = 2, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+            elif "Material" == 'Other plastic':
+                db_puntos = Puntos(cantidad_puntos = 1, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+            elif "Material" == 'Aluminium':
+                db_puntos = Puntos(cantidad_puntos = 17, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+            elif "Material" == 'Other metal':
+                db_puntos = Puntos(cantidad_puntos = 1, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+            elif "Material" == 'Cardboard':
+                db_puntos = Puntos(cantidad_puntos = 2, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+            elif "Material" == 'Paper print':
+                db_puntos = Puntos(cantidad_puntos = 1, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+            elif "Material" == 'Newspaper':
+                db_puntos = Puntos(cantidad_puntos = 2, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+            elif "Material" == 'Magazine':
+                db_puntos = Puntos(cantidad_puntos = 2, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+            elif "Material" == 'Tetrapack':
+                db_puntos = Puntos(cantidad_puntos = 2, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+            elif "Material" == 'Other':
+                db_puntos = Puntos(cantidad_puntos = 1, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+                db_puntos.save()
+
             caneca = "caneca blanca (residuos aprovechables)"
             enlace_caneca = "https://i.postimg.cc/vBC5gj0Y/7ec7efb0-caneca-blanca-para-separacion-de-residuos-y-reciclaje-150x150-1.png"
+        
         elif damage != "Undamaged" and material == "Glass":
+            db_puntos = Puntos(cantidad_puntos = 1, Usuario_id_usuario_id = usuarios_obj.id_usuario)
+            db_puntos.save()
+
             caneca = "caneca negra (residuos no aprovechables)"
             enlace_caneca = "https://i.postimg.cc/gjM4T4D1/137d264c-caneca-negra-para-separacion-de-residuos-y-reciclaje.png"
+        
+        db_actividad = Actividad(Usuario_id_usuario_id = usuarios_obj.id_usuario, tipo_actividad = 'clasificado')
+        db_actividad.save()
+
     except:
         archivo = ""
         enlace_caneca = "https://rimoplasticas.com/wp-content/uploads/2020/12/colores-de-la-caneca-de-reciclaje.jpg"
