@@ -406,6 +406,7 @@ tipoSelect7.addEventListener("change", event => {
         case "Other":
             reference.style.display = "none";
             reference.style.display = "block";
+            fadeOutEffect("damage", "N/A");
             damage.style.display = "block";
             fadeInEffect("reference", "N/A");
             fadeOutEffect("reference", "Zero", "Original", "Pony Malta", "Manzana", "Yogurt", "Bonyurt", "Chocolatina Jet", "Other", "Pepsi");
