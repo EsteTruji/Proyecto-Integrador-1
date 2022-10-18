@@ -14,7 +14,7 @@ def home(request):
 def mis_puntos(request):
     usuarios_obj = Usuario.objects.get(id_usuario = id2)
     puntos_todos = Puntos.objects.filter(Usuario_id_usuario_id = id2)
-    return render(request, 'mis_puntos.html', {'puntos_todos': puntos_todos,'nombre':usuarios_obj.nombre})
+    return render(request, 'mis_puntos.html', {'puntos_todos': puntos_todos, 'total_puntos': usuarios_obj.total_puntos,'nombre':usuarios_obj.nombre})
 
 def mi_actividad(request):
     usuarios_obj = Usuario.objects.get(id_usuario = id2)
@@ -167,6 +167,8 @@ def clasificado_etiqueta(request):
             db_actividad.save()
             db_puntos = Puntos(cantidad_puntos = cpuntos, Usuario_id_usuario_id = usuarios_obj.id_usuario)
             db_puntos.save()
+            usuarios_obj.total_puntos = usuarios_obj.total_puntos + cpuntos
+            usuarios_obj.save()
             nombre_archivo = []
             if cpuntos == 1:
                 return render(request, 'clasificado_etiqueta.html', {'mensaje': "¡Felicitaciones!, ganaste "+str(cpuntos)+" punto.",'archivo':caneca, 'enlace': enlace_caneca, 'Material': archivo2['Material'], 'Package_color': archivo2['Package_color'],'Bottle_cap': archivo2['Bottle_cap'],'Dirtiness': archivo2['Dirtiness'], 'Packaging_type': archivo2['Packaging_type'], 'Brand': archivo2['Brand'], 'Reference': archivo2['Reference'], 'Capacity': capacidad, 'Damage': archivo2['Damage']})
@@ -272,6 +274,8 @@ def etiquetaExito(request):
         db_actividad.save()
         db_puntos = Puntos(cantidad_puntos = 5, Usuario_id_usuario_id = usuarios_obj.id_usuario)
         db_puntos.save()
+        usuarios_obj.total_puntos = usuarios_obj.total_puntos + 5
+        usuarios_obj.save()
         nombre_archivo = []
         return render(request, 'exito_Etiquetado.html')
     else:
