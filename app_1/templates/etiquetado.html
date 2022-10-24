@@ -69,11 +69,12 @@
     }
     
     #sidemenu #header #menu-btn .btn-hamburger{
-        background-color: #fff;
-        width: 100%;
-        height: 2px;
-        margin: 5px 0;
-    }
+    background-color: #fff;
+    width: 100%;
+    height: 2px;
+    margin: 5px 0;
+    transition: .4s ease all;
+}
     
     
     #sidemenu #profile{
@@ -119,80 +120,93 @@
     }
     
     #sidemenu #menu-items .item a{
-        display: block;
-    }
+    display: block;
+    transition: .3s ease all;
+}
     
     #sidemenu #menu-items .item a:hover{
-        background-color: var(--hovercolor);
-    }
-    
-    #sidemenu #menu-items .item .icon{
-        box-sizing: border-box;
-        padding: var(--padding);
-        width: var(--width-collapsed);
-    }
-    
-    #sidemenu #menu-items .item .icon img{
-        width: 100%;
-    }
-    
-    #sidemenu #menu-items .item .title{
-        padding: var(--padding) 0;
-    }
-    
-    #sidemenu #menu-items .item .separator{
-        height: 1px;
-        border-bottom: solid 3px var(--hovercolor);
-        margin: 15px 0;
-    }
-    
-    #sidemenu #menu-items .borde{
-        border-bottom: solid 3px #0f1f20;
-    }
-    
-    .menu-expanded{
-        width:  var(--width);
-        box-shadow: 0 0 10px rgba(0,0,0,0.5);
-    }
-    
-    .menu-expanded #header #title{
-        display: inline-block;
-        width: calc(100% - 50px);
-        margin-right: -5px;
-        padding: var(--padding);
-    }
-    
-    .menu-expanded #header #title span2{
-        width: calc(var(--width) - var(--width-collapsed) - 5px);
-        overflow: hidden;
-    }
-    
-    .menu-expanded #profile #photo{
-        width: 80%;
-    }
-    
-    .menu-expanded #profile #name{
-        width: 100%;
-    }
-    
-    .menu-collapsed{
-        width: var(--width-collapsed);
-    }
-    
-    .menu-collapsed #header #title{
-        width: 0;
-        height: 0;
-        padding: 0;
-        margin: 0;
-    }
-    
-    .menu-collapsed #profile #name{
-        display: none;
-    }
-    
-    .menu-collapsed .item{
-        width: 100px;
-    }
+    background-color: var(--hovercolor);
+    transition: .4s ease all;
+
+}
+
+#sidemenu #menu-items .item .icon{
+    box-sizing: border-box;
+    padding: var(--padding);
+    width: var(--width-collapsed);
+    cursor: pointer;
+}
+
+#sidemenu #menu-items .item .icon img{
+    width: 100%;
+    cursor: pointer;
+}
+
+#sidemenu #menu-items .item .title{
+    padding: var(--padding) 0;
+}
+
+#sidemenu #menu-items .item .separator{
+    height: 1px;
+    border-bottom: solid 3px var(--hovercolor);
+    margin: 15px 0;
+}
+
+#sidemenu #menu-items .borde{
+    border-bottom: solid 3px #0f1f20;;
+}
+
+.menu-expanded{
+    width:  var(--width);
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    transition: .3s ease all;
+}
+
+.menu-expanded #header #title{
+    display: inline-block;
+    width: calc(100% - 50px);
+    margin-right: -5px;
+    padding: var(--padding);
+}
+
+.menu-expanded #header #title span2{
+    width: calc(var(--width) - var(--width-collapsed) - 5px);
+    overflow: hidden;
+    transition: .3s ease all;
+}
+
+.menu-expanded #profile #photo{
+    width: 80%;
+    transition: .3s ease all;
+}
+
+.menu-expanded #profile #name{
+    width: 100%;
+    transition: .3s ease all;
+}
+
+.menu-collapsed{
+    width: var(--width-collapsed);
+    transition: .3s ease all;
+}
+
+.menu-collapsed #header #title{
+    width: 0;
+    height: 0;
+    padding: 0;
+    margin: 0;
+    transition: .3s ease all;
+}
+
+.menu-collapsed #profile #name{
+    display: none;
+    transition: .3s ease all;
+}
+
+.menu-collapsed .item{
+    width: 100px;
+    transition: .3s ease all;
+}
     
     .fondoColor{
         background-color: #204044;
@@ -209,14 +223,15 @@
     }
     
     .espacios{
-        margin-left: 8px;
-        float: right;
-        padding: 0.8em;
-        color: #fff;
-        font-size: 18px;
-        text-decoration: none;
-        background: #1b363a;
-    }
+    margin-left: 8px;
+    float: right;
+    padding: 0.8em;
+    color: #fff;
+    font-size: 18px;
+    text-decoration: none;
+    background: #1b363a;
+    transition: .3s ease all;
+}
     
     .logo{
         float: right;
@@ -226,9 +241,11 @@
         color: #fff;
     }
     
-    .espacios a:hover {
-        background: rgb(255, 255, 255);
-    }
+    .espacios:hover {
+    
+    background: #152b2e;
+    cursor: pointer;
+}
     
     .centrado {
         padding-top: 1em;
@@ -323,9 +340,9 @@
             <div id="header">
                 
                 <div id="menu-btn">
-                    <div class="btn-hamburger"></div>
-                    <div class="btn-hamburger"></div>
-                    <div class="btn-hamburger"></div>
+                    <div id="btn1" class="btn-hamburger"></div>
+                <div id="btn2" class="btn-hamburger"></div>
+                <div id="btn3" class="btn-hamburger"></div>
                 </div>
             </div>
             <div id="profile">
@@ -372,12 +389,34 @@
         </div>
         <script>
             const btn = document.querySelector('#menu-btn');
-            const menu = document.querySelector('#sidemenu');
-            btn.addEventListener('click', e =>{
-                menu.classList.toggle("menu-expanded");
-                menu.classList.toggle("menu-collapsed");
-                document.querySelector('body').classList.toggle('body-expanded');
-            });
+        const btn1 = document.querySelector('#btn1');
+        const btn2 = document.querySelector('#btn2');
+        const btn3 = document.querySelector('#btn3');
+        const menu = document.querySelector('#sidemenu');
+        btn.addEventListener('click', e =>{
+            if(btn1.style.transform == 'rotate(45deg)' && btn3.style.transform == 'rotate(-45deg)'){
+                btn.style.marginTop = '0px';
+                btn1.style.transform= 'rotate(180deg)';
+                btn2.style.background = 'white';
+                btn1.style.marginBottom = '0px';
+                btn3.style.transform= 'rotate(180deg)';
+                btn3.style.marginTop = '0px';
+                btn.style.marginBottom = '0px';
+            }else{
+                btn.style.marginTop = '8px';
+                btn.style.marginBottom = '4px';
+                btn1.style.transform= 'rotate(45deg)';
+                btn2.style.background = 'transparent';
+                btn1.style.marginBottom = '-6px';
+                btn3.style.transform= 'rotate(-45deg)';
+                btn3.style.marginTop = '-8px';
+                
+            }
+            
+            menu.classList.toggle("menu-expanded");
+            menu.classList.toggle("menu-collapsed");
+            document.querySelector('body').classList.toggle('body-expanded');
+        });
         </script>
         <nav class="fondoColor alinear posicion">
             <span><a href="/"><img width=13% class="logo" src="https://i.postimg.cc/nhL7CYMT/logoconcilindro.png" alt=""></a></span>

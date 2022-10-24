@@ -28,6 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+X_FRAME_OPTIONS = 'ALLOW-FROM http://127.0.0.1:8000/'
 
 # Application definition
 

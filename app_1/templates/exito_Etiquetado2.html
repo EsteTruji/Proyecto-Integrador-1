@@ -69,11 +69,12 @@
     }
     
     #sidemenu #header #menu-btn .btn-hamburger{
-        background-color: #fff;
-        width: 100%;
-        height: 2px;
-        margin: 5px 0;
-    }
+    background-color: #fff;
+    width: 100%;
+    height: 2px;
+    margin: 5px 0;
+    transition: .4s ease all;
+}
     
     
     #sidemenu #profile{
@@ -119,8 +120,9 @@
     }
     
     #sidemenu #menu-items .item a{
-        display: block;
-    }
+    display: block;
+    transition: .3s ease all;
+}
     
     #sidemenu #menu-items .item a:hover{
         background-color: var(--hovercolor);
@@ -209,14 +211,15 @@
     }
     
     .espacios{
-        margin-left: 8px;
-        float: right;
-        padding: 0.8em;
-        color: #fff;
-        font-size: 18px;
-        text-decoration: none;
-        background: #1b363a;
-    }
+    margin-left: 8px;
+    float: right;
+    padding: 0.8em;
+    color: #fff;
+    font-size: 18px;
+    text-decoration: none;
+    background: #1b363a;
+    transition: .3s ease all;
+}
     
     .logo{
         float: right;
@@ -226,9 +229,11 @@
         color: #fff;
     }
     
-    .espacios a:hover {
-        background: rgb(255, 255, 255);
-    }
+    .espacios:hover {
+    
+    background: #152b2e;
+    cursor: pointer;
+}
     
     .centrado {
         padding-top: 1em;
@@ -321,9 +326,9 @@
             <div id="header">
                 
                 <div id="menu-btn">
-                    <div class="btn-hamburger"></div>
-                    <div class="btn-hamburger"></div>
-                    <div class="btn-hamburger"></div>
+                    <div id="btn1" class="btn-hamburger"></div>
+                <div id="btn2" class="btn-hamburger"></div>
+                <div id="btn3" class="btn-hamburger"></div>
                 </div>
             </div>
             <div id="profile">
@@ -370,12 +375,34 @@
         </div>
         <script>
             const btn = document.querySelector('#menu-btn');
-            const menu = document.querySelector('#sidemenu');
-            btn.addEventListener('click', e =>{
-                menu.classList.toggle("menu-expanded");
-                menu.classList.toggle("menu-collapsed");
-                document.querySelector('body').classList.toggle('body-expanded');
-            });
+        const btn1 = document.querySelector('#btn1');
+        const btn2 = document.querySelector('#btn2');
+        const btn3 = document.querySelector('#btn3');
+        const menu = document.querySelector('#sidemenu');
+        btn.addEventListener('click', e =>{
+            if(btn1.style.transform == 'rotate(45deg)' && btn3.style.transform == 'rotate(-45deg)'){
+                btn.style.marginTop = '0px';
+                btn1.style.transform= 'rotate(180deg)';
+                btn2.style.background = 'white';
+                btn1.style.marginBottom = '0px';
+                btn3.style.transform= 'rotate(180deg)';
+                btn3.style.marginTop = '0px';
+                btn.style.marginBottom = '0px';
+            }else{
+                btn.style.marginTop = '8px';
+                btn.style.marginBottom = '4px';
+                btn1.style.transform= 'rotate(45deg)';
+                btn2.style.background = 'transparent';
+                btn1.style.marginBottom = '-6px';
+                btn3.style.transform= 'rotate(-45deg)';
+                btn3.style.marginTop = '-8px';
+                
+            }
+            
+            menu.classList.toggle("menu-expanded");
+            menu.classList.toggle("menu-collapsed");
+            document.querySelector('body').classList.toggle('body-expanded');
+        });
         </script>
         <nav class="fondoColor alinear posicion">
             <span><a href="/"><img width=13% class="logo" src="https://i.postimg.cc/nhL7CYMT/logoconcilindro.png" alt=""></a></span>

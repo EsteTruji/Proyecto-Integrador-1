@@ -73,6 +73,7 @@ body{
     width: 100%;
     height: 2px;
     margin: 5px 0;
+    transition: .4s ease all;
 }
 
 
@@ -120,20 +121,26 @@ body{
 
 #sidemenu #menu-items .item a{
     display: block;
+    transition: .3s ease all;
 }
 
 #sidemenu #menu-items .item a:hover{
     background-color: var(--hovercolor);
+    transition: .4s ease all;
+
 }
 
 #sidemenu #menu-items .item .icon{
     box-sizing: border-box;
     padding: var(--padding);
     width: var(--width-collapsed);
+    cursor: pointer;
 }
 
 #sidemenu #menu-items .item .icon img{
     width: 100%;
+    cursor: pointer;
+    
 }
 
 #sidemenu #menu-items .item .title{
@@ -153,6 +160,7 @@ body{
 .menu-expanded{
     width:  var(--width);
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    transition: .3s ease all;
 }
 
 .menu-expanded #header #title{
@@ -165,18 +173,22 @@ body{
 .menu-expanded #header #title span2{
     width: calc(var(--width) - var(--width-collapsed) - 5px);
     overflow: hidden;
+    transition: .3s ease all;
 }
 
 .menu-expanded #profile #photo{
     width: 80%;
+    transition: .3s ease all;
 }
 
 .menu-expanded #profile #name{
     width: 100%;
+    transition: .3s ease all;
 }
 
 .menu-collapsed{
     width: var(--width-collapsed);
+    transition: .3s ease all;
 }
 
 .menu-collapsed #header #title{
@@ -184,14 +196,17 @@ body{
     height: 0;
     padding: 0;
     margin: 0;
+    transition: .3s ease all;
 }
 
 .menu-collapsed #profile #name{
     display: none;
+    transition: .3s ease all;
 }
 
 .menu-collapsed .item{
     width: 100px;
+    transition: .3s ease all;
 }
 
 .fondoColor{
@@ -216,6 +231,7 @@ body{
     font-size: 18px;
     text-decoration: none;
     background: #1b363a;
+    transition: .3s ease all;
 }
 
 .logo{
@@ -226,8 +242,10 @@ body{
     color: #fff;
 }
 
-.espacios a:hover {
-    background: rgb(255, 255, 255);
+.espacios:hover {
+    
+    background: #152b2e;
+    cursor: pointer;
 }
 
 .centrado {
@@ -251,6 +269,7 @@ body{
   border-radius: 1em;
   padding: 1em;
   margin-left: 2em;
+  transition: .3s ease all;
   
 }
 
@@ -273,8 +292,8 @@ body{
     color: rgb(0, 68, 3);
 }
 
-.botones a:hover{
-    background-color: rgb(0, 39, 112);
+.box:hover{
+    background: rgb(79, 123, 209);
 }
   
 
@@ -296,9 +315,9 @@ body{
         <div id="header">
             
             <div id="menu-btn">
-                <div class="btn-hamburger"></div>
-                <div class="btn-hamburger"></div>
-                <div class="btn-hamburger"></div>
+                <div id="btn1" class="btn-hamburger"></div>
+                <div id="btn2" class="btn-hamburger"></div>
+                <div id="btn3" class="btn-hamburger"></div>
             </div>
         </div>
         <div id="profile">
@@ -314,44 +333,36 @@ body{
             <div class="item separator borde">
                 <a href="mi_actividad/">
                     <div class="icon"><abbr title="Mi actividad"><img style="padding-top:0.5em; padding-bottom:0.5em;" src="https://i.postimg.cc/q7PT9jv1/tiempo.png" alt=""></abbr></div>
-                    <div class="title" style="margin-top: 0.5em;"><span2><h6><font face="Poppins">Mi actividad</font></h6></span2></div>
+                    <div class="title" style="margin-top: 0.5em;"><span2><h6><font face="Poppins" >Mi actividad</font></h6></span2></div>
                 </a>
             </div>
             <div class="item separator borde">
                 <a href="filtrar_por/">
                     <div class="icon"><abbr title="Filtrar por..."><img style="padding-top:0.5em; padding-bottom:0.5em;" src="https://i.postimg.cc/cCRjzkhk/943769.png" alt=""></abbr></div>
-                    <div class="title" style="margin-top: 0.5em;"><span2><h6><font face="Poppins">Filtrar por...</font></h6></span2></div>
+                    <div class="title" style="margin-top: 0.5em;"><span2><h6><font face="Poppins" >Filtrar por...</font></h6></span2></div>
                 </a>
             </div>
             <div class="item separator borde">
                 <a href="mis_puntos/">
                     <div class="icon"><abbr title="Mis Puntos"><img style="padding-top:0.5em; padding-bottom:0.5em;" src="https://i.postimg.cc/pVzgyyvQ/1140033.png" alt=""></abbr></div>
-                    <div class="title" style="margin-top: 0.5em;"><span2><h6><font face="Poppins">Mis Puntos</font></h6></span2></div>
+                    <div class="title" style="margin-top: 0.5em;"><span2><h6><font face="Poppins" >Mis Puntos</font></h6></span2></div>
                 </a>
             </div>
             <div class="item separator borde">
                 <a href="clasificado/">
                     <div class="icon"><abbr title="Clasificado de residuos"><img style="padding-top:0.5em; padding-bottom:0.5em;" src="https://i.postimg.cc/PrM9zcPP/3320628.png" alt=""></abbr></div>
-                    <div class="title" style="margin-top: 0.5em;"><span2><h6><font face="Poppins">Clasificado de residuos</font></h6></span2></div>
+                    <div class="title" style="margin-top: 0.5em;"><span2><h6><font face="Poppins" >Clasificado de residuos</font></h6></span2></div>
                 </a>
             </div>
             <div class="item separator borde">
                 <a href="etiquetado/">
-                    <div class="icon"><abbr title="Etiquetado de residuos"><img style="padding-top:0.5em; padding-bottom:0.5em;" src="https://i.postimg.cc/sfc4pTbD/etiqueta.png" alt=""></abbr></div>
-                    <div class="title" style="margin-top: 0.5em;"><span2><h6><font face="Poppins">Etiquetado de residuos</font></h6></span2></div>
+                    <div class="icon" ><abbr title="Etiquetado de residuos"><img style="padding-top:0.5em; padding-bottom:0.5em;" src="https://i.postimg.cc/sfc4pTbD/etiqueta.png" alt=""></abbr></div>
+                    <div class="title" style="margin-top: 0.5em;"><span2><h6><font face="Poppins" >Etiquetado de residuos</font></h6></span2></div>
                 </a>
             </div>
         </div>
     </div>
-    <script>
-        const btn = document.querySelector('#menu-btn');
-        const menu = document.querySelector('#sidemenu');
-        btn.addEventListener('click', e =>{
-            menu.classList.toggle("menu-expanded");
-            menu.classList.toggle("menu-collapsed");
-            document.querySelector('body').classList.toggle('body-expanded');
-        });
-    </script>
+    
      <nav class="fondoColor alinear posicion">
         <span><a href="/"><img width=13% class="logo" src="https://i.postimg.cc/nhL7CYMT/logoconcilindro.png" alt=""></a></span>
         <span>
@@ -387,31 +398,31 @@ body{
           
     
           <table style="text-align:center">
-            <tr><th><a href="../mi_actividad/">
+            <tr><th><a id="actividad1" href="../mi_actividad/">
                 <img class="box"
                 width="150"
                 alt="WhatsApp Logo"
                 src="https://i.postimg.cc/q7PT9jv1/tiempo.png"
                 /></a></th>
-                <th><a href="../filtrar_por/">
+                <th><a id="filtrar1" href="../filtrar_por/">
                     <img class="box"
                     width="150"
                     alt="WhatsApp Logo"
                     src="https://i.postimg.cc/cCRjzkhk/943769.png"
                     /></a></th>
-                <th><a href="../mis_puntos/">
+                <th><a id="puntos1" href="../mis_puntos/">
                     <img class="box"
                     width="150"
                     alt="WhatsApp Logo"
                     src="https://i.postimg.cc/pVzgyyvQ/1140033.png"
                     /></a></th>
-                <th><a href="../clasificado/">
+                <th><a id="clasificado1" href="../clasificado/">
                     <img class="box"
                     width="150"
                     alt="WhatsApp Logo"
                     src="https://i.postimg.cc/PrM9zcPP/3320628.png"
                     /></a></th>
-                <th><a href="../etiquetado/">
+                <th><a id="etiquetado1" href="../etiquetado/">
                     <img class="box"
                     width="150"
                     alt="WhatsApp Logo"
@@ -420,11 +431,11 @@ body{
                 
             </tr>
             <tr>
-                <th style="padding-left:1.5em; font-size: 23;"><font face="Poppins" color="#0000">Mi actividad</font></th>
-                <th style="padding-left:1.5em; font-size: 23;"><font face="Poppins" color="#0000">Filtrar por...</font></th>
-                <th style="padding-left:1.5em; font-size: 23;"><font face="Poppins" color="#0000">Mis Puntos</font></th>
-                <th style="padding-left:1.5em; padding-top: 1em; font-size: 23;"><font face="Poppins" color="#0000">Clasificado <br>de residuos</font></th>
-                <th style="padding-left:1.5em; padding-top: 1em; font-size: 23;"><font face="Poppins" color="#0000">Etiquetado <br>de residuos</font></th>
+                <th style="padding-left:1.5em; font-size: 23;"><font face="Poppins" color="#0000" id="actividad">Mi actividad</font></th>
+                <th style="padding-left:1.5em; font-size: 23;"><font face="Poppins" color="#0000" id="filtrar">Filtrar por...</font></th>
+                <th style="padding-left:1.5em; font-size: 23;"><font face="Poppins" color="#0000" id="puntos">Mis Puntos</font></th>
+                <th style="padding-left:1.5em; padding-top: 1em; font-size: 23;"><font face="Poppins" color="#0000" id="clasificado">Clasificado <br>de residuos</font></th>
+                <th style="padding-left:1.5em; padding-top: 1em; font-size: 23;"><font face="Poppins" color="#0000" id="etiquetado">Etiquetado <br>de residuos</font></th>
             </tr>
             
             
@@ -449,5 +460,93 @@ body{
     </div>
     </div>
 
+    <script>
+        const btn = document.querySelector('#menu-btn');
+        const btn1 = document.querySelector('#btn1');
+        const btn2 = document.querySelector('#btn2');
+        const btn3 = document.querySelector('#btn3');
+        const menu = document.querySelector('#sidemenu');
+        btn.addEventListener('click', e =>{
+            if(btn1.style.transform == 'rotate(45deg)' && btn3.style.transform == 'rotate(-45deg)'){
+                btn.style.marginTop = '0px';
+                btn1.style.transform= 'rotate(180deg)';
+                btn2.style.background = 'white';
+                btn1.style.marginBottom = '0px';
+                btn3.style.transform= 'rotate(180deg)';
+                btn3.style.marginTop = '0px';
+                btn.style.marginBottom = '0px';
+            }else{
+                btn.style.marginTop = '8px';
+                btn.style.marginBottom = '4px';
+                btn1.style.transform= 'rotate(45deg)';
+                btn2.style.background = 'transparent';
+                btn1.style.marginBottom = '-6px';
+                btn3.style.transform= 'rotate(-45deg)';
+                btn3.style.marginTop = '-8px';
+                
+            }
+            
+            menu.classList.toggle("menu-expanded");
+            menu.classList.toggle("menu-collapsed");
+            document.querySelector('body').classList.toggle('body-expanded');
+        });
+        const colorA = '#243c69';
+        const actividad1 = document.querySelector('#actividad1');
+        const actividad = document.querySelector('#actividad');
+        actividad1.addEventListener('mousemove', e =>{
+            actividad.style.transition = '.4s ease all';
+            actividad.style.color = colorA;
+        });
+        actividad1.addEventListener('mouseout', e =>{
+            actividad.style.transition = '.4s ease all';
+            actividad.style.color = '#000';
+        });
+
+        const filtrar1 = document.querySelector('#filtrar1');
+        const filtrar = document.querySelector('#filtrar');
+        filtrar1.addEventListener('mousemove', e =>{
+            filtrar.style.transition = '.4s ease all';
+            filtrar.style.color = colorA;
+        });
+        filtrar1.addEventListener('mouseout', e =>{
+            filtrar.style.transition = '.4s ease all';
+            filtrar.style.color = '#000';
+        });
+
+        const puntos1 = document.querySelector('#puntos1');
+        const puntos = document.querySelector('#puntos');
+        puntos1.addEventListener('mousemove', e =>{
+            puntos.style.transition = '.4s ease all';
+            puntos.style.color = colorA;
+        });
+        puntos1.addEventListener('mouseout', e =>{
+            puntos.style.transition = '.4s ease all';
+            puntos.style.color = '#000';
+        });
+
+        const clasificado1 = document.querySelector('#clasificado1');
+        const clasificado = document.querySelector('#clasificado');
+        clasificado1.addEventListener('mousemove', e =>{
+            clasificado.style.transition = '.4s ease all';
+            clasificado.style.color = colorA;
+        });
+        clasificado1.addEventListener('mouseout', e =>{
+            clasificado.style.transition = '.4s ease all';
+            clasificado.style.color = '#000';
+        });
+
+        const etiquetado1 = document.querySelector('#etiquetado1');
+        const etiquetado = document.querySelector('#etiquetado');
+        etiquetado1.addEventListener('mousemove', e =>{
+            etiquetado.style.transition = '.4s ease all';
+            etiquetado.style.color = colorA;
+        });
+        etiquetado1.addEventListener('mouseout', e =>{
+            etiquetado.style.transition = '.4s ease all';
+            etiquetado.style.color = '#000';
+        });
+        
+
+    </script>
 </body>
 </html>
