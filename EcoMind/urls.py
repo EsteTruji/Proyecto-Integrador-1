@@ -13,13 +13,16 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from asyncio.windows_events import NULL
 from django.contrib import admin
 from django.urls import path
 from app_1 import views as app1Views
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', app1Views.home),
+    path('home/', app1Views.home),
     path('mis_puntos/', app1Views.mis_puntos),
     path('mi_actividad/', app1Views.mi_actividad),
     path('filtrar_por/', app1Views.filtrar_por),
@@ -29,4 +32,8 @@ urlpatterns = [
     path('clasificado/', app1Views.clasificado),
     path('clasificado_etiqueta/', app1Views.clasificado_etiqueta),
     path('clasificado_formulario/', app1Views.clasificado_formulario),
+    path('login/', app1Views.login1),
+    path('registro/', app1Views.registro),
+    path('logout/', app1Views.logoutUser),
+
 ]

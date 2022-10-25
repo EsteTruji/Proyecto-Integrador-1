@@ -4,35 +4,99 @@ from django.http import HttpResponse
 from app_1.models import *
 import json
 import os
+from django.contrib import messages
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+from django import forms
+from django.shortcuts import redirect
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 id2 = 1
 
+
+# Create your views here.
+def registro(request):
+    if request.user.is_authenticated:
+        return redirect('../home/')
+    else:
+        class CreateUserForm(UserCreationForm):
+            class Meta:
+                model = User
+                fields = ['username', 'password1', 'password2']
+        form = CreateUserForm()
+        if request.method == 'POST':
+            form = UserCreationForm(request.POST)
+            if form.is_valid():
+                form.save()
+                user = form.cleaned_data.get('username')
+                messages.success(request, 'La cuenta fue creada')
+                messages.success(request, 'satisfactoriamente para '+ user)
+                usuarioN = Usuario(nombre = user)
+                usuarioN.save()
+                return redirect('../login/')
+        context = {'form': form}
+        return render(request, 'registro.html', context)
+
+def login1(request):
+    if request.user.is_authenticated:
+        return redirect('../home/')
+    else:
+        if request.method == 'POST':
+            username = request.POST.get('username')
+            password = request.POST.get('password')
+
+            user = authenticate(request, username = username, password = password)
+            if user is not None:
+                login(request, user)
+                return redirect('../home/')
+            else:
+               
+                messages.info(request, 'Nombre de usuario o contraseña')
+                messages.info(request, 'están incorrectos')
+                
+
+        context = {}
+        return render(request, 'login.html', context)
+
+def logoutUser(request):
+    logout(request)
+    return redirect('../login/')
+
+@login_required(login_url='../login/')
 def home(request):
-    usuarios_obj = Usuario.objects.get(id_usuario = id2)
+    usuarios_obj = Usuario.objects.get(nombre = request.user)
     return render(request, 'home.html', {'nombre':usuarios_obj.nombre})
 
+@login_required(login_url='../login/')
 def mis_puntos(request):
-    usuarios_obj = Usuario.objects.get(id_usuario = id2)
-    puntos_todos = Puntos.objects.filter(Usuario_id_usuario_id = id2)
+    usuarios_obj = Usuario.objects.get(nombre = request.user)
+    puntos_todos = Puntos.objects.filter(Usuario_id_usuario_id = usuarios_obj.id_usuario)
     return render(request, 'mis_puntos.html', {'puntos_todos': puntos_todos, 'total_puntos': usuarios_obj.total_puntos,'nombre':usuarios_obj.nombre})
 
+@login_required(login_url='../login/')
 def mi_actividad(request):
-    usuarios_obj = Usuario.objects.get(id_usuario = id2)
-    actividades = Actividad.objects.filter(Usuario_id_usuario_id = id2)
+    usuarios_obj = Usuario.objects.get(nombre = request.user)
+    actividades = Actividad.objects.filter(Usuario_id_usuario_id = usuarios_obj.id_usuario)
     return render(request, 'mi_actividad.html', {'actividades': actividades,'nombre':usuarios_obj.nombre})
 
+@login_required(login_url='../login/')
 def filtrar_por(request):
     return render(request, 'filtrar_por.html')
 
+@login_required(login_url='../login/')
 def etiquetado(request):
     return render(request, 'etiquetado.html')
 
+@login_required(login_url='../login/')
 def realizar_etiquetado(request):
     return render(request, 'realizar_etiquetado.html')    
 
+@login_required(login_url='../login/')
 def clasificado(request):
     return render(request, 'clasificado.html')
 
+@login_required(login_url='../login/')
 def clasificado_etiqueta(request):
     try:
         archivo = request.POST['archivo']
@@ -148,12 +212,12 @@ def clasificado_etiqueta(request):
 
             caneca = "caneca negra (residuos no aprovechables)"
             enlace_caneca = "https://i.postimg.cc/gjM4T4D1/137d264c-caneca-negra-para-separacion-de-residuos-y-reciclaje.png"
-        usuarios_obj = Usuario.objects.get(id_usuario = id2)
+        usuarios_obj = Usuario.objects.get(nombre = request.user)
         id_archivo1 = request.POST['archivo']
         
 
         verifier = False
-        clasificaciones = Clasificacion.objects.filter(Usuario_id_usuario_id = id2)
+        clasificaciones = Clasificacion.objects.filter(Usuario_id_usuario_id = usuarios_obj.id_usuario)
         for e in clasificaciones:
             t = e.id_archivo
             if t == id_archivo1:
@@ -181,6 +245,7 @@ def clasificado_etiqueta(request):
             db_actividad.save()
             return render(request, 'clasificado_etiqueta.html', {'mensaje': "Como ya habías clasificado este residuo, no ganaste puntos", 'archivo':caneca, 'enlace': enlace_caneca, 'Material': archivo2['Material'], 'Package_color': archivo2['Package_color'],'Bottle_cap': archivo2['Bottle_cap'],'Dirtiness': archivo2['Dirtiness'], 'Packaging_type': archivo2['Packaging_type'], 'Brand': archivo2['Brand'], 'Reference': archivo2['Reference'], 'Capacity': capacidad, 'Damage': archivo2['Damage']})
 
+@login_required(login_url='../login/')
 def clasificado_formulario(request):
     try:
         caneca = ""
@@ -220,9 +285,9 @@ def clasificado_formulario(request):
     else:
         return render(request, 'clasificado_formulario.html', {'archivo':caneca, 'enlace': enlace_caneca, 'Material': material, 'Package_color': package_color,'Bottle_cap': bottle_cap,'Dirtiness': dirtiness, 'Packaging_type': packaging_type, 'Brand': brand, 'Reference': reference, 'Capacity': capacidad, 'Damage': damage})
         
-
+@login_required(login_url='../login/')
 def etiquetaExito(request):
-    usuarios_obj = Usuario.objects.get(id_usuario = id2)
+    usuarios_obj = Usuario.objects.get(nombre = request.user)
     material = request.POST['material']
     package_color = request.POST['package_color']
     bottle_cap = request.POST['bottle_cap']
