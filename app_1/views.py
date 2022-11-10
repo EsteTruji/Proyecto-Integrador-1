@@ -75,6 +75,15 @@ def mis_puntos(request):
     return render(request, 'mis_puntos.html', {'puntos_todos': puntos_todos, 'total_puntos': usuarios_obj.total_puntos,'nombre':usuarios_obj.nombre})
 
 @login_required(login_url='../login/')
+def tienda(request):
+    usuarios_obj = Usuario.objects.get(nombre = request.user)
+    puntos_todos = Puntos.objects.filter(Usuario_id_usuario_id = usuarios_obj.id_usuario)
+    if puntos_todos == 1:
+        return render(request, 'tienda.html', {'puntos_todos': puntos_todos, 'total_puntos': str(usuarios_obj.total_puntos) + " punto",'nombre':usuarios_obj.nombre})
+    else:
+        return render(request, 'tienda.html', {'puntos_todos': puntos_todos, 'total_puntos': str(usuarios_obj.total_puntos) + " puntos",'nombre':usuarios_obj.nombre})
+
+@login_required(login_url='../login/')
 def mi_actividad(request):
     usuarios_obj = Usuario.objects.get(nombre = request.user)
     actividades = Actividad.objects.filter(Usuario_id_usuario_id = usuarios_obj.id_usuario)

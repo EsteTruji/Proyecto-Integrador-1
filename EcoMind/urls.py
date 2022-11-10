@@ -25,6 +25,7 @@ urlpatterns = [
     path('home/', app1Views.home),
     path('mis_puntos/', app1Views.mis_puntos),
     path('mi_actividad/', app1Views.mi_actividad),
+    path('store/', app1Views.tienda),
     path('filtrar_por/', app1Views.filtrar_por),
     path('etiquetado/', app1Views.etiquetado),
     path('etiqueta_exito/', app1Views.etiquetaExito),
@@ -35,5 +36,4 @@ urlpatterns = [
     path('login/', app1Views.login1),
     path('registro/', app1Views.registro),
     path('logout/', app1Views.logoutUser),
-
 ]

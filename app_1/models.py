@@ -36,6 +36,12 @@ class Clasificacion(models.Model):
 	id_archivo = models.CharField(max_length=150, null = True, blank=False)
 	fecha_actividad = models.DateTimeField(auto_now_add=True)
 
+class Producto(models.Model):
+	id_producto = models.AutoField(primary_key=True, blank=False)
+	nombre_producto = models.CharField(max_length=45, null=False)
+	costo = models.PositiveIntegerField(default=0)
+	stock = models.PositiveIntegerField(default=0)
+
 #python manage.py makemigrations
 #python manage.py sqlmigrate app_1 0001
 #python manage.py migrate
