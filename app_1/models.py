@@ -23,12 +23,12 @@ class Etiqueta(models.Model):
 
 class Puntos(models.Model):
 	Usuario_id_usuario = models.ForeignKey(Usuario, null=False, blank=False, on_delete=models.CASCADE)
-	cantidad_puntos = models.PositiveIntegerField(default=0)
+	cantidad_puntos = models.IntegerField(default=0)
 	fecha_puntos = models.DateTimeField(auto_now_add=True)
 
 class Actividad(models.Model):
 	Usuario_id_usuario = models.ForeignKey(Usuario, null= False, blank=False, on_delete=models.CASCADE)
-	tipo_actividad = models.CharField(max_length=45, null=False, blank=False, choices=(('etiquetado','etiquetado'),('clasificado','clasificado')))
+	tipo_actividad = models.CharField(max_length=45, null=False, blank=False, choices=(('etiquetado','etiquetado'),('clasificado','clasificado'), ('canjeo','canjeo')))
 	fecha_actividad = models.DateTimeField(auto_now_add=True)
 
 class Clasificacion(models.Model):
@@ -39,6 +39,8 @@ class Clasificacion(models.Model):
 class Producto(models.Model):
 	id_producto = models.AutoField(primary_key=True, blank=False)
 	nombre_producto = models.CharField(max_length=45, null=False)
+	imagen = models.CharField(max_length=1000, null=False)
+	descripcion = models.CharField(max_length=1000, null=False)
 	costo = models.PositiveIntegerField(default=0)
 	stock = models.PositiveIntegerField(default=0)
 

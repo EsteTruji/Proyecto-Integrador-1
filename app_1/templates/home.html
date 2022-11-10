@@ -52,6 +52,7 @@
     #sidemenu #header #title {
         box-sizing: border-box;
         overflow: hidden;
+        transition: .5s ease all;
     }
 
     #sidemenu #header #title,
@@ -121,6 +122,7 @@
         vertical-align: middle;
         overflow: hidden;
         display: inline-block;
+        transition: .5s ease all;
     }
 
     #sidemenu #menu-items .item a {
@@ -149,6 +151,7 @@
 
     #sidemenu #menu-items .item .title {
         padding: var(--padding) 0;
+        transition: .5s ease all;
     }
 
     #sidemenu #menu-items .item .separator {
@@ -173,6 +176,7 @@
         width: calc(100% - 50px);
         margin-right: -5px;
         padding: var(--padding);
+        transition: .5s ease all;
     }
 
     .menu-expanded #header #title span2 {
@@ -310,6 +314,10 @@
     .box:hover {
         background: rgb(79, 123, 209);
     }
+
+    .presente {
+        background-color: var(--hovercolor);
+    }
 </style>
 
 <!DOCTYPE html>
@@ -340,7 +348,7 @@
             <div id="photo"><img src="https://i.postimg.cc/y6FrPBjt/logocirculo.png" alt=""> </div>
         </div>
         <div id="menu-items">
-            <div class="item borde">
+            <div class="item borde presente" id="inicio">
                 <a href="/">
                     <div class="icon"><abbr title="Inicio"><img style="padding-top:0.5em; padding-bottom:0.5em;"
                                 src="https://i.postimg.cc/TYxBbG2z/2544087.png" alt=""></abbr></div>
@@ -353,7 +361,7 @@
                     </div>
                 </a>
             </div>
-            <div class="item separator borde">
+            <div class="item separator borde" id="activity">
                 <a href="../mi_actividad/">
                     <div class="icon"><abbr title="Mi actividad"><img style="padding-top:0.5em; padding-bottom:0.5em;"
                                 src="https://i.postimg.cc/q7PT9jv1/tiempo.png" alt=""></abbr></div>
@@ -366,20 +374,8 @@
                     </div>
                 </a>
             </div>
-            <div class="item separator borde">
-                <a href="../filtrar_por/">
-                    <div class="icon"><abbr title="Filtrar por..."><img style="padding-top:0.5em; padding-bottom:0.5em;"
-                                src="https://i.postimg.cc/cCRjzkhk/943769.png" alt=""></abbr></div>
-                    <div class="title" style="margin-top: 0.5em;">
-                        <span2>
-                            <h6>
-                                <font face="Poppins">Filtrar por...</font>
-                            </h6>
-                        </span2>
-                    </div>
-                </a>
-            </div>
-            <div class="item separator borde">
+
+            <div class="item separator borde" id="points">
                 <a href="../mis_puntos/">
                     <div class="icon"><abbr title="Mis Puntos"><img style="padding-top:0.5em; padding-bottom:0.5em;"
                                 src="https://i.postimg.cc/pVzgyyvQ/1140033.png" alt=""></abbr></div>
@@ -392,7 +388,7 @@
                     </div>
                 </a>
             </div>
-            <div class="item separator borde">
+            <div class="item separator borde" id="tagging">
                 <a href="../etiquetado/">
                     <div class="icon"><abbr title="Etiquetado de residuos"><img
                                 style="padding-top:0.5em; padding-bottom:0.5em;"
@@ -406,7 +402,7 @@
                     </div>
                 </a>
             </div>
-            <div class="item separator borde">
+            <div class="item separator borde" id="classify">
                 <a href="../clasificado/">
                     <div class="icon"><abbr title="Clasificado de residuos"><img
                                 style="padding-top:0.5em; padding-bottom:0.5em;"
@@ -415,6 +411,20 @@
                         <span2>
                             <h6>
                                 <font face="Poppins">Clasificado de residuos</font>
+                            </h6>
+                        </span2>
+                    </div>
+                </a>
+            </div>
+
+            <div class="item separator borde" id="store">
+                <a href="../store/">
+                    <div class="icon"><abbr title="Tienda"><img style="padding-top:0.5em; padding-bottom:0.5em;"
+                                src="https://i.postimg.cc/nV2NrhPR/tienda.png" alt=""></abbr></div>
+                    <div class="title" style="margin-top: 0.5em;">
+                        <span2>
+                            <h6>
+                                <font face="Poppins">Tienda</font>
                             </h6>
                         </span2>
                     </div>
@@ -486,9 +496,9 @@
                     <th><a id="actividad1" href="../mi_actividad/">
                             <img class="box" id="actividad2" width="150" alt="WhatsApp Logo"
                                 src="https://i.postimg.cc/q7PT9jv1/tiempo.png" /></a></th>
-                    <th><a id="filtrar1" href="../filtrar_por/">
+                    <th><a id="filtrar1" href="../store/">
                             <img class="box" id="filtrar2" width="150" alt="WhatsApp Logo"
-                                src="https://i.postimg.cc/cCRjzkhk/943769.png" /></a></th>
+                                src="https://i.postimg.cc/nV2NrhPR/tienda.png" /></a></th>
                     <th><a id="puntos1" href="../mis_puntos/">
                             <img class="box" id="puntos2" width="150" alt="WhatsApp Logo"
                                 src="https://i.postimg.cc/pVzgyyvQ/1140033.png" /></a></th>
@@ -505,7 +515,7 @@
                         <font face="Poppins" color="#0000" id="actividad">Mi actividad</font>
                     </th>
                     <th style="padding-left:1.5em; font-size: 23;">
-                        <font face="Poppins" color="#0000" id="filtrar">Filtrar por...</font>
+                        <font face="Poppins" color="#0000" id="filtrar">Tienda</font>
                     </th>
                     <th style="padding-left:1.5em; font-size: 23;">
                         <font face="Poppins" color="#0000" id="puntos">Mis Puntos</font>
@@ -575,6 +585,70 @@
             menu.classList.toggle("menu-collapsed");
             document.querySelector('body').classList.toggle('body-expanded');
         });
+
+
+
+
+        const color = '#243c69';
+        const home = document.querySelector('#inicio');
+        const activity = document.querySelector('#activity');
+        const points = document.querySelector('#points');
+        const tagging = document.querySelector('#tagging');
+        const classify = document.querySelector('#classify');
+        const store = document.querySelector('#store');
+
+        points.addEventListener('mousemove', e => {
+            home.style.transition = '.4s ease all';
+            home.style.backgroundColor = '#193235';
+        });
+
+        points.addEventListener('mouseout', e => {
+            home.style.transition = '.4s ease all';
+            home.style.backgroundColor = '#0f1f20';
+        });
+
+        activity.addEventListener('mousemove', e => {
+            home.style.transition = '.4s ease all';
+            home.style.backgroundColor = '#193235';
+        });
+
+        activity.addEventListener('mouseout', e => {
+            home.style.transition = '.4s ease all';
+            home.style.backgroundColor = '#0f1f20';
+        });
+
+        tagging.addEventListener('mousemove', e => {
+            home.style.transition = '.4s ease all';
+            home.style.backgroundColor = '#193235';
+        });
+
+        tagging.addEventListener('mouseout', e => {
+            home.style.transition = '.4s ease all';
+            home.style.backgroundColor = '#0f1f20';
+        });
+
+        classify.addEventListener('mousemove', e => {
+            home.style.transition = '.4s ease all';
+            home.style.backgroundColor = '#193235';
+        });
+
+        classify.addEventListener('mouseout', e => {
+            home.style.transition = '.4s ease all';
+            home.style.backgroundColor = '#0f1f20';
+        });
+
+        store.addEventListener('mousemove', e => {
+            home.style.transition = '.4s ease all';
+            home.style.backgroundColor = '#193235';
+        });
+
+        store.addEventListener('mouseout', e => {
+            home.style.transition = '.4s ease all';
+            home.style.backgroundColor = '#0f1f20';
+        });
+
+
+
         const colorA = '#243c69';
         const actividad1 = document.querySelector('#actividad1');
         const actividad = document.querySelector('#actividad');

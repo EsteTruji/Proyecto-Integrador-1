@@ -283,7 +283,7 @@
         background: #70c6ff;
         border-radius: 1em;
         padding: 1em;
-        margin-left: 2em;
+
         transition: .3s ease all;
 
     }
@@ -309,6 +309,10 @@
 
     .box:hover {
         background: rgb(79, 123, 209);
+    }
+
+    .presente {
+        background-color: var(--hovercolor);
     }
 </style>
 
@@ -339,8 +343,9 @@
         <div id="profile">
             <div id="photo"><img src="https://i.postimg.cc/y6FrPBjt/logocirculo.png" alt=""> </div>
         </div>
+
         <div id="menu-items">
-            <div class="item borde">
+            <div class="item borde" id="inicio">
                 <a href="/">
                     <div class="icon"><abbr title="Inicio"><img style="padding-top:0.5em; padding-bottom:0.5em;"
                                 src="https://i.postimg.cc/TYxBbG2z/2544087.png" alt=""></abbr></div>
@@ -353,7 +358,7 @@
                     </div>
                 </a>
             </div>
-            <div class="item separator borde">
+            <div class="item separator borde" id="activity">
                 <a href="../mi_actividad/">
                     <div class="icon"><abbr title="Mi actividad"><img style="padding-top:0.5em; padding-bottom:0.5em;"
                                 src="https://i.postimg.cc/q7PT9jv1/tiempo.png" alt=""></abbr></div>
@@ -366,33 +371,20 @@
                     </div>
                 </a>
             </div>
-            <div class="item separator borde">
-                <a href="../filtrar_por/">
-                    <div class="icon"><abbr title="Filtrar por..."><img style="padding-top:0.5em; padding-bottom:0.5em;"
-                                src="https://i.postimg.cc/cCRjzkhk/943769.png" alt=""></abbr></div>
-                    <div class="title" style="margin-top: 0.5em;">
-                        <span2>
-                            <h6>
-                                <font face="Poppins">Filtrar por...</font>
-                            </h6>
-                        </span2>
-                    </div>
-                </a>
-            </div>
-            <div class="item separator borde">
+            <div class="item separator borde" id="points">
                 <a href="../mis_puntos/">
                     <div class="icon"><abbr title="Mis Puntos"><img style="padding-top:0.5em; padding-bottom:0.5em;"
                                 src="https://i.postimg.cc/pVzgyyvQ/1140033.png" alt=""></abbr></div>
                     <div class="title" style="margin-top: 0.5em;">
                         <span2>
                             <h6>
-                                <font face="Poppins">Mis Puntos</font>
+                                <font face="Poppins">Mis puntos</font>
                             </h6>
                         </span2>
                     </div>
                 </a>
             </div>
-            <div class="item separator borde">
+            <div class="item separator borde" id="tagging">
                 <a href="../etiquetado/">
                     <div class="icon"><abbr title="Etiquetado de residuos"><img
                                 style="padding-top:0.5em; padding-bottom:0.5em;"
@@ -406,7 +398,7 @@
                     </div>
                 </a>
             </div>
-            <div class="item separator borde">
+            <div class="item separator borde" id="classify">
                 <a href="../clasificado/">
                     <div class="icon"><abbr title="Clasificado de residuos"><img
                                 style="padding-top:0.5em; padding-bottom:0.5em;"
@@ -420,8 +412,21 @@
                     </div>
                 </a>
             </div>
-
+            <div class="item separator borde presente" id="store">
+                <a href="../store/">
+                    <div class="icon"><abbr title="Tienda"><img style="padding-top:0.5em; padding-bottom:0.5em;"
+                                src="https://i.postimg.cc/nV2NrhPR/tienda.png" alt=""></abbr></div>
+                    <div class="title" style="margin-top: 0.5em;">
+                        <span2>
+                            <h6>
+                                <font face="Poppins">Tienda</font>
+                            </h6>
+                        </span2>
+                    </div>
+                </a>
+            </div>
         </div>
+    </div>
     </div>
 
     <nav class="fondoColor alinear posicion">
@@ -446,15 +451,25 @@
     </nav>
 
     <div class="" style="text-align: center; padding-top:3.5em;">
-        <img style="box-shadow: 0px 3px 5px rgb(0, 0, 0)" width=1070
-            src="https://i.postimg.cc/DZBxjkGR/banner-prueba.png" border="0px">
+        <img style="box-shadow: 0px 3px 5px rgb(0, 0, 0)" width=1070 src="https://i.postimg.cc/ZqRkJcck/Imagen8.png"
+            border="0px">
     </div>
     <div style="padding-top:2em;">
         <div>
             <h2 align="center" style="padding-bottom:0.5em;"><b>
-                    <font face="Poppins"> {{nombre}}, ¡Bienvenid@ a la tienda de<b class="color1">Eco</b><b
-                            class="color2">Mind! </b></font>
+                    <h2 style="text-align:center;"><b>
+                            <font face=Poppins> ¡Bienvenid@ a la sección <b class="color1"> Tienda! </font>
+                        </b></h2>
+
             </h2>
+        </div>
+        <div style="text-align:center; padding-bottom: 2em;">
+            <img class="box" width="170" alt="WhatsApp Logo" src="https://i.postimg.cc/nV2NrhPR/tienda.png" />
+            <div style="padding-top: 1em; padding-bottom: 1em;">
+                <a href="../store/#puntos" class="btn btn-primary btn-lg" style=" border: 3px solid rgb(0, 103, 172);">
+                    <font face="Poppins">Iniciar canjeos</font>
+                </a>
+            </div>
         </div>
 
         <div style="padding-bottom: 15px; padding-left:13em; padding-right: 13em;">
@@ -468,150 +483,87 @@
                     <h4 align="center" class="center titulo5 mt-4 mb-4">
                         <font face="Poppins" color="#0000">🎊🎀 Muchas gracias por tu ayuda y disfruta tu recompensa
                             🎀🎊<b class="color1">
+                                <a id="puntos"></a>
                 </div>
             </div>
         </div>
 
-        <div style="text-align: center; padding-bottom: 1em;">
-            <h3>
-                <font face="Poppins" color="#0000">Tu total de puntos es: <b>{{total_puntos}}</b></font>
-            </h3>
+        <div style="text-align: center; padding-bottom: 1em; padding-top: 2em;">
+
+            <h1>
+                <font face="Poppins" color="#0000"><b>Tienda</b> <b class="color1">Eco</b><b class="color2">Mind
+                    </b></font>
+            </h1>
+
+            <div>
+                <h3 style="padding-top: 1em;">
+                    <font face="Poppins" color="#0000">Tu total de puntos es: <b>{{total_puntos}}</b></font>
+                    <br>
+                    <br>
+
+                    <h4><b>
+                            <font face="Poppins" color="#0000">{{mensaje}}</font>
+                        </b></h4>
+                </h3>
+            </div>
+
+
         </div>
 
         <div style="padding-left: 15em; padding-top: 25px; padding-bottom:25px;">
-            <table style="text-align:center">
-                <tr>
-                    <th>
-                        <img class="box" width="250" alt="WhatsApp Logo"
-                            src="https://i.postimg.cc/90dScTPX/bolso-Eco-Mind.png" />
-                    </th>
-                    <th>
-                        <img class="box" width="250" alt="WhatsApp Logo"
-                            src="https://i.postimg.cc/8CYx4TPG/billetera-Eco-Mind.png" />
-                    </th>
-                    <th>
-                        <img class="box" width="250" alt="WhatsApp Logo"
-                            src="https://i.postimg.cc/kGXG8c2p/camisa-Eco-Mind.png" />
-                    </th>
-                </tr>
-                <tr>
-                    <th style="padding-right:10em; font-size: 14;">
-                        <font face="Poppins" color="#0000" id="actividad">Stock:</font>
-                    </th>
-                    <th style="padding-right:10em; font-size: 14;">
-                        <font face="Poppins" color="#0000" id="filtrar">Stock:</font>
-                    </th>
-                    <th style="padding-right:10em; font-size: 14;">
-                        <font face="Poppins" color="#0000" id="puntos">Stock:</font>
-                    </th>
-                </tr>
 
-                <tr>
-                    <th style="padding-left:1.5em; font-size: 23;">
-                        <font face="Poppins" color="#0000" id="actividad">Bolso</font>
-                    </th>
-                    <th style="padding-left:1.5em; font-size: 23;">
-                        <font face="Poppins" color="#0000" id="filtrar">Billetera</font>
-                    </th>
-                    <th style="padding-left:1.5em; font-size: 23;">
-                        <font face="Poppins" color="#0000" id="puntos">Camiseta</font>
-                    </th>
-                </tr>
+            <table style="text-align:center;">
+                {% for producto in productos %}
+                <form action="/store/#puntos" method="POST">
+                    {% csrf_token %}
+                    <tr>
+                        <th>
+                            <img class="box" width="250" alt="WhatsApp Logo" src="{{producto.imagen}}" />
+                        </th>
+                        <th style="padding-left: 2em; padding-right: 15em;">
+                            <h4>
+                                <font face="Poppins" color="#0000" id="actividad"><b>{{producto.nombre_producto}}</b>
+                                </font>
+                                <input id="product" name="producto_elegido" type="hidden"
+                                    value={{producto.id_producto}}>
+                            </h4>
+                            <h5>
+                                <font face="Poppins" style="padding-bottom:0.5em;" color="#0000" id="actividad">Costo:
+                                    <b>{{producto.costo}} punto(s)</b>
+                                </font>
+                            </h5>
+                            <font face="Poppins" style="padding-bottom:0.5em;" color="#0000" id="actividad">Stock:
+                                <b>{{producto.stock}}</b>
+                            </font>
+                            <h6>
+                                <font face="Poppins" color="#0000" id="actividad">{{producto.descripcion}}</font>
+                            </h6>
 
-                <tr>
-                    <th style="padding-left: 2em; padding-top: 2em;">
-                        <button type="submit" class="btn btn-primary btn-lg"
-                            style="  border: 3px solid rgb(0, 103, 172);">
-                            <font face="Poppins">Comprar</font>
-                        </button>
-                    </th>
+                            <div style="padding-top: 1em;">
+                                <button type="submit" class="btn btn-primary btn-lg"
+                                    style="  border: 3px solid rgb(0, 103, 172);">
+                                    <font face="Poppins">Canjear</font>
+                                </button>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>
+                            <br>
+                            <br>
+                            <br>
 
-                    <th style="padding-left: 2em; padding-top: 2em;">
-                        <button type="submit" class="btn btn-primary btn-lg"
-                            style=" border: 3px solid rgb(0, 103, 172);">
-                            <font face="Poppins">Comprar</font>
-                        </button>
-                    </th>
-                    <th style="padding-left: 2em; padding-top: 2em;">
-                        <button type="submit" class="btn btn-primary btn-lg"
-                            style=" border: 3px solid rgb(0, 103, 172);">
-                            <font face="Poppins">Comprar</font>
-                        </button>
-                    </th>
-                </tr>
-
-
+                        </th>
+                    </tr>
+                </form>
+                {% endfor %}
             </table>
             <br>
             <br>
             <br>
             <br>
             <br>
-            <table style="text-align:center">
-                <tr>
-                    <th>
-                        <img class="box" width="250" alt="WhatsApp Logo"
-                            src="https://i.postimg.cc/pTvpVxRx/gorrra-Eco-Mind.png" />
-                    </th>
-                    <th>
-                        <img class="box" width="250" alt="WhatsApp Logo"
-                            src="https://i.postimg.cc/BnXggH88/mug-Eco-Mind.png" />
-                    </th>
-                    <th>
-                        <img class="box" width="250" alt="WhatsApp Logo"
-                            src="https://i.postimg.cc/fLjjLvPP/Bolsa-Eco-Mind.png" />
-                    </th>
-                </tr>
 
-                <tr>
-                    <th style="padding-right:10em; font-size: 14;">
-                        <font face="Poppins" color="#0000" id="actividad">Stock:</font>
-                    </th>
-                    <th style="padding-right:10em; font-size: 14;">
-                        <font face="Poppins" color="#0000" id="filtrar">Stock:</font>
-                    </th>
-                    <th style="padding-right:10em; font-size: 14;">
-                        <font face="Poppins" color="#0000" id="puntos">Stock:</font>
-                    </th>
-                </tr>
-
-                <tr>
-                    <th style="padding-left:1.5em; font-size: 23;">
-                        <font face="Poppins" color="#0000" id="actividad">Gorra</font>
-                    </th>
-                    <th style="padding-left:1.5em; font-size: 23;">
-                        <font face="Poppins" color="#0000" id="filtrar">Mug</font>
-                    </th>
-                    <th style="padding-left:1.5em; font-size: 23;">
-                        <font face="Poppins" color="#0000" id="puntos">Bolsa</font>
-                    </th>
-                </tr>
-
-
-                <tr>
-                    <th style="padding-left: 2em; padding-top: 2em;">
-                        <button type="submit" class="btn btn-primary btn-lg"
-                            style="  border: 3px solid rgb(0, 103, 172);">
-                            <font face="Poppins">Comprar</font>
-                        </button>
-                    </th>
-
-                    <th style="padding-left: 2em; padding-top: 2em;">
-                        <button type="submit" class="btn btn-primary btn-lg"
-                            style=" border: 3px solid rgb(0, 103, 172);">
-                            <font face="Poppins">Comprar</font>
-                        </button>
-                    </th>
-                    <th style="padding-left: 2em; padding-top: 2em;">
-                        <button type="submit" class="btn btn-primary btn-lg"
-                            style=" border: 3px solid rgb(0, 103, 172);">
-                            <font face="Poppins">Comprar</font>
-                        </button>
-                    </th>
-                </tr>
-
-
-            </table>
         </div>
 
     </div>
@@ -647,6 +599,65 @@
             document.querySelector('body').classList.toggle('body-expanded');
         });
         const colorA = '#243c69';
+
+
+        const home = document.querySelector('#inicio');
+        const activity = document.querySelector('#activity');
+        const points = document.querySelector('#points');
+        const tagging = document.querySelector('#tagging');
+        const classify = document.querySelector('#classify');
+        const store = document.querySelector('#store');
+
+        points.addEventListener('mousemove', e => {
+            store.style.transition = '.4s ease all';
+            store.style.backgroundColor = '#193235';
+        });
+
+        points.addEventListener('mouseout', e => {
+            store.style.transition = '.4s ease all';
+            store.style.backgroundColor = '#0f1f20';
+        });
+
+        activity.addEventListener('mousemove', e => {
+            store.style.transition = '.4s ease all';
+            store.style.backgroundColor = '#193235';
+        });
+
+        activity.addEventListener('mouseout', e => {
+            store.style.transition = '.4s ease all';
+            store.style.backgroundColor = '#0f1f20';
+        });
+
+        tagging.addEventListener('mousemove', e => {
+            store.style.transition = '.4s ease all';
+            store.style.backgroundColor = '#193235';
+        });
+
+        tagging.addEventListener('mouseout', e => {
+            store.style.transition = '.4s ease all';
+            store.style.backgroundColor = '#0f1f20';
+        });
+
+        classify.addEventListener('mousemove', e => {
+            store.style.transition = '.4s ease all';
+            store.style.backgroundColor = '#193235';
+        });
+
+        classify.addEventListener('mouseout', e => {
+            store.style.transition = '.4s ease all';
+            store.style.backgroundColor = '#0f1f20';
+        });
+
+        home.addEventListener('mousemove', e => {
+            store.style.transition = '.4s ease all';
+            store.style.backgroundColor = '#193235';
+        });
+
+        home.addEventListener('mouseout', e => {
+            home.style.transition = '.4s ease all';
+            home.style.backgroundColor = '#0f1f20';
+        });
+
         const actividad1 = document.querySelector('#actividad1');
         const actividad = document.querySelector('#actividad');
         actividad1.addEventListener('mousemove', e => {
