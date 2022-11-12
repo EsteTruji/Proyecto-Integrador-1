@@ -30,11 +30,15 @@ def registro(request):
             if form.is_valid():
                 form.save()
                 user = form.cleaned_data.get('username')
+                pwd = form.cleaned_data.get('password1')
                 messages.success(request, 'La cuenta fue creada')
                 messages.success(request, 'satisfactoriamente para ' + user)
                 usuarioN = Usuario(nombre=user)
                 usuarioN.save()
-                return redirect('../login/')
+                user2 = authenticate(request, username=user, password=pwd)
+                login(request, user2)
+                return redirect('../home/')
+                
         context = {'form': form}
         return render(request, 'registro.html', context)
 
