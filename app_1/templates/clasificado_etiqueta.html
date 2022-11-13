@@ -584,11 +584,8 @@
 
     <form action="/clasificado_etiqueta/#success" method="POST">
         {% csrf_token %}
-        <div style="padding-top:2em;padding-bottom:2em;">
-            <div class="color4 borde1" style="margin-left: 28em; margin-right: 28em; padding: 0.5em;">
-
-                <input class="form-control" type="file" id="file-input" accept=".json" required>
-            </div>
+        <div style="padding-top:0em;padding-bottom:2em;">
+            
             <div style="padding-top: 2em;">
                 <a id="success"></a>
                 <table style="text-align:center; background:none; border:none;">
@@ -606,9 +603,12 @@
                                 </h4>
                             </div>
                             <div>
-                                <select class="form-select" id="images"
-                                    style="margin-bottom:5px; border: 3px solid #007491; text-align: center;" size="7"
-                                    aria-label="size 7 select example" type="text" name="archivo" required></select>
+                                <select class="form-select" id="images" style="margin-bottom:5px; border: 3px solid #007491; text-align: center;" size="7"
+                                    aria-label="size 7 select example" type="number" name="archivo" required>
+                                    {% for etiqueta in etiquetas%}
+                                    <option value={{etiqueta.id}}><font face="Poppins">Etiqueta - {{etiqueta.id_archivo}}</font></option>
+                                    {% endfor %}
+                                </select>
                             </div>
                             <div style="padding-top: 0.5em;">
                                 <button type="submit" class="btn btn-primary btn-lg"
@@ -621,63 +621,6 @@
                     </tr>
                 </table>
             </div>
-            <script type="text/javascript">
-
-                let test = [];
-                let patron = /(.*\.png)/;
-                let patron2 = /(.*\.jpg)/;
-                let patron3 = /(.*\.json)/;
-                let temp2 = " ";
-                let text = "";
-                let arch = [];
-                let archFinal = [];
-                let nn = 0;
-                let imagen = [];
-                let item2;
-                var imag = new Image();
-                let prueba = [];
-                document.getElementById("file-input").addEventListener("change", (event) => {
-
-                    archFinal = [];
-                    let fileInput = document.getElementById("file-input");
-                    let imageContainer = document.getElementById("images");
-                    imageContainer.innerHTML = "";
-                    console.log("length: " + event.target.files.length);
-                    //for(const file of event.target.files){
-                    for (var f = event.target.files.length - 1; f >= 0; f--) {
-                        const file = event.target.files[f];
-                        prueba.push(event.target.files[f]);
-                        let figCap = document.createElement("figcaption");
-                        figCap.innerText = file.name;
-                        text = figCap.innerText;
-                        imagen.push(text);
-                        archFinal.push(imagen);
-                        imagen = [];
-
-                        //imageContainer.appendChild(figure);    
-                    }
-                    //}
-
-
-                    let temp3 = " ";
-                    let temp4 = " ";
-                    let tempComp;
-                    let incl = false;
-                    let tag = false;
-                    let pos = 0;
-
-                    for (var j = 0; j < archFinal.length; j++) {
-                        imageContainer.innerHTML += `<option selected value="${archFinal[j][0]}">${archFinal[j][0]} <b> - Etiqueta </b> </option>`;
-                    };
-                    arch = [];
-
-                    temp3 = " ";
-
-
-
-                }, false);
-
-            </script>
 
     </form>
     <div class="color4 borde1" style="margin-left: 15em;margin-right: 15em;text-align: center; padding:1em;">

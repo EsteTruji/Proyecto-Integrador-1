@@ -158,129 +158,133 @@ def clasificado(request):
 
 @login_required(login_url='../login/')
 def clasificado_etiqueta(request):
+    usuarios_obj3 = Usuario.objects.get(nombre=request.user)
+    etiquetas = Etiqueta.objects.filter(Usuario_id_usuario_id=usuarios_obj3.id_usuario)
+
     try:
         archivo = request.POST['archivo']
     except:
-        archivo = ""
+        archivo = 0
         enlace_caneca = "https://rimoplasticas.com/wp-content/uploads/2020/12/colores-de-la-caneca-de-reciclaje.jpg"
-        return render(request, 'clasificado_etiqueta.html', {'archivo': "...", 'enlace': enlace_caneca})
+        return render(request, 'clasificado_etiqueta.html', {'archivo': "...", 'enlace': enlace_caneca, 'etiquetas':etiquetas})
     else:
         caneca = ""
         cpuntos = 0
         enlace_caneca = ""
-        nombre_carpeta = "Observaciones"
-        ruta = os.path.abspath(nombre_carpeta)
-        with open(os.path.join(ruta, archivo), 'r') as f:
-            archivo2 = json.load(f)
-        if archivo2['Capacity'] != "N/A":
-            capacidad = archivo2['Capacity'] + " ml"
+        
+        archivo2= Etiqueta.objects.get(id=int(archivo))
+
+        if archivo2.Capacity != "N/A":
+            capacidad = archivo2.Capacity + " ml"
         else:
-            capacidad = archivo2['Capacity']
-        if archivo2['Material'] == "Other plastic":
+            capacidad = archivo2.Capacity
+        if archivo2.Material == "Other plastic":
             caneca = "caneca negra (residuos no aprovechables)"
             enlace_caneca = "https://i.postimg.cc/gjM4T4D1/137d264c-caneca-negra-para-separacion-de-residuos-y-reciclaje.png"
 
             cpuntos = 1
 
-        elif archivo2['Dirtiness'] == "Clean" and archivo2['Damage'] == "Undamaged":
-            if archivo2['Material'] == 'PET':
+        elif archivo2.Dirtiness == "Clean" and archivo2.Damage == "Undamaged":
+            if archivo2.Material == 'PET':
                 cpuntos = 2
-            elif archivo2['Material'] == 'PE-HD':
+            elif archivo2.Material == 'PE-HD':
                 cpuntos = 6
-            elif archivo2['Material'] == 'PVC':
+            elif archivo2.Material == 'PVC':
                 cpuntos = 7
-            elif archivo2['Material'] == 'PE-LD':
+            elif archivo2.Material == 'PE-LD':
                 cpuntos = 4
-            elif archivo2['Material'] == 'PP':
+            elif archivo2.Material == 'PP':
                 cpuntos = 2
-            elif archivo2['Material'] == 'PS':
+            elif archivo2.Material == 'PS':
                 cpuntos = 2
-            elif archivo2['Material'] == 'Other plastic':
+            elif archivo2.Material == 'Other plastic':
                 cpuntos = 1
-            elif archivo2['Material'] == 'Glass':
+            elif archivo2.Material == 'Glass':
                 cpuntos = 2
-            elif archivo2['Material'] == 'Aluminium':
+            elif archivo2.Material == 'Aluminium':
                 cpuntos = 17
-            elif archivo2['Material'] == 'Other metal':
+            elif archivo2.Material == 'Other metal':
                 cpuntos = 1
-            elif archivo2['Material'] == 'Cardboard':
+            elif archivo2.Material == 'Cardboard':
                 cpuntos = 2
-            elif archivo2['Material'] == 'Paper print':
+            elif archivo2.Material == 'Paper print':
                 cpuntos = 1
-            elif archivo2['Material'] == 'Newspaper':
+            elif archivo2.Material == 'Newspaper':
                 cpuntos = 2
-            elif archivo2['Material'] == 'Magazine':
+            elif archivo2.Material == 'Magazine':
                 cpuntos = 2
-            elif archivo2['Material'] == 'Tetrapack':
+            elif archivo2.Material == 'Tetrapack':
                 cpuntos = 2
-            elif archivo2['Material'] == 'Other':
+            elif archivo2.Material == 'Other':
                 cpuntos = 1
 
             caneca = "caneca blanca (residuos aprovechables)"
             enlace_caneca = "https://i.postimg.cc/vBC5gj0Y/7ec7efb0-caneca-blanca-para-separacion-de-residuos-y-reciclaje-150x150-1.png"
 
-        elif archivo2['Dirtiness'] != "Clean":
+        elif archivo2.Dirtiness != "Clean":
             cpuntos = 1
 
             caneca = "caneca negra (residuos no aprovechables)"
             enlace_caneca = "https://i.postimg.cc/gjM4T4D1/137d264c-caneca-negra-para-separacion-de-residuos-y-reciclaje.png"
 
-        elif archivo2['Dirtiness'] == "Clean" and archivo2['Material'] != "Glass":
+        elif archivo2.Dirtiness == "Clean" and archivo2.Material != "Glass":
 
-            if archivo2['Material'] == 'PET':
+            if archivo2.Material == 'PET':
                 cpuntos = 2
-            elif archivo2['Material'] == 'PE-HD':
+            elif archivo2.Material == 'PE-HD':
                 cpuntos = 6
-            elif archivo2['Material'] == 'PVC':
+            elif archivo2.Material == 'PVC':
                 cpuntos = 7
-            elif archivo2['Material'] == 'PE-LD':
+            elif archivo2.Material == 'PE-LD':
                 cpuntos = 4
-            elif archivo2['Material'] == 'PP':
+            elif archivo2.Material == 'PP':
                 cpuntos = 2
-            elif archivo2['Material'] == 'PS':
+            elif archivo2.Material == 'PS':
                 cpuntos = 2
-            elif archivo2['Material'] == 'Other plastic':
+            elif archivo2.Material == 'Other plastic':
                 cpuntos = 1
-            elif archivo2['Material'] == 'Aluminium':
+            elif archivo2.Material == 'Aluminium':
                 cpuntos = 17
-            elif archivo2['Material'] == 'Other metal':
+            elif archivo2.Material == 'Other metal':
                 cpuntos = 1
-            elif archivo2['Material'] == 'Cardboard':
+            elif archivo2.Material == 'Cardboard':
                 cpuntos = 2
-            elif archivo2['Material'] == 'Paper print':
+            elif archivo2.Material == 'Paper print':
                 cpuntos = 1
-            elif archivo2['Material'] == 'Newspaper':
+            elif archivo2.Material == 'Newspaper':
                 cpuntos = 2
-            elif archivo2['Material'] == 'Magazine':
+            elif archivo2.Material == 'Magazine':
                 cpuntos = 2
-            elif archivo2['Material'] == 'Tetrapack':
+            elif archivo2.Material == 'Tetrapack':
                 cpuntos = 2
-            elif archivo2['Material'] == 'Other':
+            elif archivo2.Material == 'Other':
                 cpuntos = 1
 
             caneca = "caneca blanca (residuos aprovechables)"
             enlace_caneca = "https://i.postimg.cc/vBC5gj0Y/7ec7efb0-caneca-blanca-para-separacion-de-residuos-y-reciclaje-150x150-1.png"
 
-        elif archivo2['Damage'] != "Undamaged" and archivo2['Material'] == "Glass":
+        elif archivo2.Damage != "Undamaged" and archivo2.Material == "Glass":
             cpuntos = 1
 
             caneca = "caneca negra (residuos no aprovechables)"
             enlace_caneca = "https://i.postimg.cc/gjM4T4D1/137d264c-caneca-negra-para-separacion-de-residuos-y-reciclaje.png"
         usuarios_obj = Usuario.objects.get(nombre=request.user)
         id_archivo1 = request.POST['archivo']
+        etiquetas4 = Etiqueta.objects.get(id=id_archivo1)
+        id_archivo2 = etiquetas4.id_archivo
 
         verifier = False
         clasificaciones = Clasificacion.objects.filter(
             Usuario_id_usuario_id=usuarios_obj.id_usuario)
         for e in clasificaciones:
             t = e.id_archivo
-            if t == id_archivo1:
+            if t == id_archivo2:
                 nombre_archivo = []
                 verifier = True
 
         if verifier == False:
             db_clasificacion = Clasificacion(
-                id_archivo=id_archivo1, Usuario_id_usuario_id=usuarios_obj.id_usuario)
+                id_archivo=id_archivo2, Usuario_id_usuario_id=usuarios_obj.id_usuario)
             db_clasificacion.save()
             db_actividad = Actividad(
                 Usuario_id_usuario_id=usuarios_obj.id_usuario, tipo_actividad='clasificado')
@@ -292,17 +296,17 @@ def clasificado_etiqueta(request):
             usuarios_obj.save()
             nombre_archivo = []
             if cpuntos == 1:
-                return render(request, 'clasificado_etiqueta.html', {'mensaje': "¡Felicitaciones!, ganaste "+str(cpuntos)+" punto.", 'archivo': caneca, 'enlace': enlace_caneca, 'Material': archivo2['Material'], 'Package_color': archivo2['Package_color'], 'Bottle_cap': archivo2['Bottle_cap'], 'Dirtiness': archivo2['Dirtiness'], 'Packaging_type': archivo2['Packaging_type'], 'Brand': archivo2['Brand'], 'Reference': archivo2['Reference'], 'Capacity': capacidad, 'Damage': archivo2['Damage']})
+                return render(request, 'clasificado_etiqueta.html', {'etiquetas':etiquetas,'mensaje': "¡Felicitaciones!, ganaste "+str(cpuntos)+" punto.", 'archivo': caneca, 'enlace': enlace_caneca, 'Material': archivo2.Material, 'Package_color': archivo2.Package_color, 'Bottle_cap': archivo2.Bottle_cap, 'Dirtiness': archivo2.Dirtiness, 'Packaging_type': archivo2.Packaging_type, 'Brand': archivo2.Brand, 'Reference': archivo2.Reference, 'Capacity': capacidad, 'Damage': archivo2.Damage})
             else:
-                return render(request, 'clasificado_etiqueta.html', {'mensaje': "¡Felicitaciones!, ganaste "+str(cpuntos)+" puntos.", 'archivo': caneca, 'enlace': enlace_caneca, 'Material': archivo2['Material'], 'Package_color': archivo2['Package_color'], 'Bottle_cap': archivo2['Bottle_cap'], 'Dirtiness': archivo2['Dirtiness'], 'Packaging_type': archivo2['Packaging_type'], 'Brand': archivo2['Brand'], 'Reference': archivo2['Reference'], 'Capacity': capacidad, 'Damage': archivo2['Damage']})
+                return render(request, 'clasificado_etiqueta.html', {'etiquetas':etiquetas,'mensaje': "¡Felicitaciones!, ganaste "+str(cpuntos)+" puntos.", 'archivo': caneca, 'enlace': enlace_caneca, 'Material': archivo2.Material, 'Package_color': archivo2.Package_color, 'Bottle_cap': archivo2.Bottle_cap, 'Dirtiness': archivo2.Dirtiness, 'Packaging_type': archivo2.Packaging_type, 'Brand': archivo2.Brand, 'Reference': archivo2.Reference, 'Capacity': capacidad, 'Damage': archivo2.Damage})
         else:
             db_clasificacion = Clasificacion(
-                id_archivo=id_archivo1, Usuario_id_usuario_id=usuarios_obj.id_usuario)
+                id_archivo=id_archivo2, Usuario_id_usuario_id=usuarios_obj.id_usuario)
             db_clasificacion.save()
             db_actividad = Actividad(
                 Usuario_id_usuario_id=usuarios_obj.id_usuario, tipo_actividad='clasificado')
             db_actividad.save()
-            return render(request, 'clasificado_etiqueta.html', {'mensaje': "Como ya habías clasificado este residuo, no ganaste puntos", 'archivo': caneca, 'enlace': enlace_caneca, 'Material': archivo2['Material'], 'Package_color': archivo2['Package_color'], 'Bottle_cap': archivo2['Bottle_cap'], 'Dirtiness': archivo2['Dirtiness'], 'Packaging_type': archivo2['Packaging_type'], 'Brand': archivo2['Brand'], 'Reference': archivo2['Reference'], 'Capacity': capacidad, 'Damage': archivo2['Damage']})
+            return render(request, 'clasificado_etiqueta.html', {'etiquetas':etiquetas, 'mensaje': "Como ya habías clasificado este residuo, no ganaste puntos", 'archivo': caneca, 'enlace': enlace_caneca, 'Material': archivo2.Material, 'Package_color': archivo2.Package_color, 'Bottle_cap': archivo2.Bottle_cap, 'Dirtiness': archivo2.Dirtiness, 'Packaging_type': archivo2.Packaging_type, 'Brand': archivo2.Brand, 'Reference': archivo2.Reference, 'Capacity': capacidad, 'Damage': archivo2.Damage})
 
 
 @login_required(login_url='../login/')
@@ -375,17 +379,9 @@ def etiquetaExito(request):
     nombre_archivo = id_archivo1.split()
     id_archivo1 = nombre_archivo[0]
 
-    nombre_carpeta = "Observaciones"
-    ruta = os.path.abspath(nombre_carpeta)
-
-    with open(os.path.join(ruta, id_archivo1+'.json'), 'w') as f:
-        json.dump(pruebaEtiquetas, f)
-
-    '''with open(os.path.join(dir, 'Etiqueta.json'), 'r') as f:
-        pruebaEtiquetas = json.load(f)'''
 
     verifier = False
-    etiquetas = Etiqueta.objects.filter(Usuario_id_usuario_id=id2)
+    etiquetas = Etiqueta.objects.filter(Usuario_id_usuario_id=usuarios_obj.id_usuario)
     for e in etiquetas:
         t = e.id_archivo
         if t == id_archivo1:
@@ -405,12 +401,14 @@ def etiquetaExito(request):
         usuarios_obj.total_puntos = usuarios_obj.total_puntos + 5
         usuarios_obj.save()
         nombre_archivo = []
-        return render(request, 'exito_Etiquetado.html')
+        return render(request, 'exito_Etiquetado.html', {'archivo': id_archivo1})
     else:
+        db = Etiqueta.objects.filter(Usuario_id_usuario_id = usuarios_obj.id_usuario, id_archivo = id_archivo1)
+        db.delete()
         db_etiqueta = Etiqueta(id_archivo=id_archivo1, Usuario_id_usuario_id=usuarios_obj.id_usuario, Material=material, Package_color=package_color,
                                Bottle_cap=bottle_cap, Dirtiness=dirtiness, Packaging_type=packaging_type, Brand=brand, Reference=reference, Capacity=capacity, Damage=damage)
         db_etiqueta.save()
         db_actividad = Actividad(
             Usuario_id_usuario_id=usuarios_obj.id_usuario, tipo_actividad='etiquetado')
         db_actividad.save()
-        return render(request, 'exito_Etiquetado2.html')
+        return render(request, 'exito_Etiquetado2.html', {'archivo': id_archivo1})
