@@ -651,7 +651,7 @@
                                     style="margin-bottom:5px; border: 3px solid #007491; text-align: center;" size="7"
                                     aria-label="size 7 select example" type="text" name="id_archivo" required></select>
                                 <h6>
-                                    <font face="Poppins" color="#0000">✅: Etiquetado | ✖️: No etiquetado</font>
+                                    <font face="Poppins" color="#0000"></font>
                                 </h6>
                             </th>
                         </tr>
@@ -729,7 +729,7 @@
                                     }
                                     if (temp3 == temp4) {
                                         if (tag == true) {
-                                            archFinal[pos - 1][0] = temp3 + " ✅";
+                                            archFinal[pos - 1][0] = temp3;
                                             tag = false;
                                         }
                                     }
@@ -755,7 +755,7 @@
                                         console.log("igual y false");
                                         console.log("entro a igual");
                                         if (tag == true) {
-                                            archFinal[pos][0] = temp3 + " ✅";
+                                            archFinal[pos][0] = temp3;
                                         }
                                         temp4 = " ";
                                     }
@@ -764,7 +764,7 @@
                                         console.log("diferente y false");
                                         console.log(temp3);
                                         console.log(pos);
-                                        archFinal[pos][0] = temp3 + " ✖️";
+                                        archFinal[pos][0] = temp3;
                                     }
 
                                     tag = false;
@@ -810,7 +810,7 @@
                                     if (temp5.search('-') != -1) {
                                         temp5 = temp5.slice(0, temp5.search('-'));
                                     }
-                                    if (((temp5 + " ✅") == valorSeleccionado2) || ((temp5 + " ✖️") == valorSeleccionado2)) {
+                                    if (((temp5) == valorSeleccionado2) || ((temp5) == valorSeleccionado2)) {
 
                                         reader.onload = function () {
 
