@@ -1,9 +1,8 @@
-from asyncio.windows_events import NULL
+
 from django.shortcuts import render
 from django.http import HttpResponse
 from app_1.models import *
-import json
-import os
+
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
