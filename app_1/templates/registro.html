@@ -468,9 +468,14 @@
 			<a href="/"><abbr class="espacios" title="Regresa a la pantalla de inicio">
 					<font face="Poppins">Inicio</font>
 				</abbr></a>
+			
+				
 		</span>
+		
 	</nav>
+	
 	<div style="text-align: center; padding-top: 2em;" class="container h-100">
+		
 		<div class="d-flex justify-content-center h-100">
 			<div class="user_card">
 				<div class="d-flex justify-content-center">
@@ -482,6 +487,7 @@
 
 					<form method="POST" action="/registro/">
 						{% csrf_token %}
+						
 						<div class="input-group mb-2">
 							<div class="input-group-append">
 								<span class="input-group-text"><i face="Poppins" class="fas fa-user"></i></span>
@@ -517,14 +523,20 @@
 					</div>
 				</div>
 			</div>
-			<div style="padding-top: 6em; padding-left: 3em; transition: .3s ease all; ">
+			<div style="padding-top: 4em; padding-left: 3em; transition: .3s ease all; ">
 				<div>
 					<p>
+						<h6><font face="Poppins" style="text-align: center;" color="#203b6b"><b>
+							{{form.errors.password2}}
+							{{form.errors.username}}
+						</b></font></h6>	
 					<h4 style="padding-bottom: 0.5em;">
+						
 						<font face="Poppins"> <b>Ten en cuenta que...</b></font>
 					</h4>
 					<h6>
 						<font face="Poppins">
+							
 							La contraseña no puede <br>parecerse al nombre.<br>
 							<br>
 							La contraseña debe tener <br>al menos 8 caracteres, <br>
