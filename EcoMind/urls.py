@@ -34,4 +34,5 @@ urlpatterns = [
     path('login/', app1Views.login1),
     path('registro/', app1Views.registro),
     path('logout/', app1Views.logoutUser),
+    path('creditos/', app1Views.creditos),
 ]

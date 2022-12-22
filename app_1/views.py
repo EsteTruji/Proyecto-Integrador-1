@@ -15,6 +15,9 @@ id2 = 1
 
 
 # Create your views here.
+def creditos(request):
+    return render(request, 'creditos.html')
+    
 def registro(request):
     if request.user.is_authenticated:
         return redirect('../home/')
