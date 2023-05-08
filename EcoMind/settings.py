@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-^#w*w)(3kjtzaqtt-w-x)^&e-otkn$8g)&2-49(xhgj+g&3d*$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','34.173.55.6', '10.128.0.4']
+ALLOWED_HOSTS = ['127.0.0.1','34.173.55.6', '34.132.132.36']
 
 X_FRAME_OPTIONS = 'ALLOW-FROM http://127.0.0.1:8000/'
 
